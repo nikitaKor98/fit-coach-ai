@@ -1,0 +1,14 @@
+@import "./reset.css";
+@import "./variables.css";
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: var(--font-family-base);
+  color: var(--color-text-primary);
+  background: var(--color-bg-primary);
+}
+
+#root {
+  min-height: 100vh;
+}

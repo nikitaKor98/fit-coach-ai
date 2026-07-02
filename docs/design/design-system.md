@@ -2,217 +2,502 @@
 
 ## Purpose
 
-The design system defines the visual language, interaction principles, and reusable UI patterns of FitCoach AI.
+This document defines the visual language and UI principles of FitCoach AI.
 
-Its purpose is to ensure consistency, scalability, and maintainability as the product evolves.
+The goal of the design system is not only to create a consistent interface, but to support the product philosophy:
 
-Every new component, page, or feature should follow the principles described in this document.
+> Help users make better decisions every day.
+
+Every visual element should contribute to understanding, confidence, and action.
 
 ---
 
 # Design Philosophy
 
-FitCoach AI is not just another fitness dashboard.
+FitCoach AI is not a dashboard.
 
-It is a decision-support system that helps users understand their body and make better training decisions.
+It is an AI-powered coaching system.
 
-The interface should answer one primary question:
+The interface should feel like guidance rather than reporting.
 
-> **"What should I do today?"**
+Users should never feel overwhelmed by numbers.
 
-Instead of overwhelming users with numbers, the application should transform complex health and fitness data into clear, understandable insights.
+Instead, the interface should progressively reveal information.
 
-The UI should feel:
-
-- Professional
-- Calm
-- Modern
-- Trustworthy
-- Data-focused
+The most important conclusion should always appear before the supporting metrics.
 
 ---
 
-# Product Values
+# Core Design Principles
 
-## Clarity
+## Decision First
 
-Users should understand their current condition within a few seconds.
-
-Every screen must have a clear visual hierarchy.
-
-Important information should always be visible first.
-
----
-
-## Simplicity
-
-Every interface element must have a purpose.
-
-Decorative elements should never compete with information.
-
-If something does not improve understanding, it should not exist.
-
----
-
-## Consistency
-
-Similar data must always be displayed in a similar way.
-
-The same interaction should always produce the same result.
-
-Users should never have to learn the interface twice.
-
----
-
-## Scalability
-
-The system should support future features without redesigning existing components.
-
-New metrics should fit naturally into existing layouts.
-
-Components should be reusable rather than specialized.
-
----
-
-## Accessibility
-
-Interfaces should remain readable under different lighting conditions and on different screen sizes.
-
-Color should never be the only way to communicate information.
-
----
-
-# Core Principles
-
-## Mobile First
-
-Every feature is designed for mobile before being adapted to larger screens.
-
-Desktop layouts extend the mobile experience rather than becoming separate interfaces.
-
----
-
-## Dark Theme First
-
-Dark mode is the primary design target.
-
-Light mode should provide the same experience without changing layout or interaction patterns.
-
----
-
-## Data First
-
-Data is the main content.
-
-The interface exists to explain the data—not the other way around.
-
-Visual effects should support comprehension rather than decoration.
-
----
-
-## One Screen, One Goal
-
-Each screen should answer one primary question.
+Every screen should answer a question before displaying data.
 
 Examples:
 
-Dashboard → "How am I doing today?"
+- Should I train today?
+- Am I recovering well?
+- What should I improve?
+- Am I progressing?
 
-Recovery → "Am I ready to train?"
-
-Workout → "How did today's training affect my progress?"
-
----
-
-## One Card, One Story
-
-Each card should communicate a single idea.
-
-Users should understand the purpose of a card without reading lengthy descriptions.
+The answer should appear before graphs or raw metrics.
 
 ---
 
 ## Progressive Disclosure
 
-Show only the information necessary for the current context.
+Information should be presented in layers.
 
-Additional details become available through expansion or navigation.
+```text
+Insight
+↓
+Explanation
+↓
+Metrics
+↓
+Raw Data
+```
 
-Users should never feel overwhelmed by information.
+Most users should never need to reach the last level.
+
+---
+
+## Context Before Numbers
+
+Numbers without context are difficult to interpret.
+
+Example:
+
+Instead of:
+
+```text
+HRV
+58 ms
+```
+
+Prefer:
+
+```text
+Recovery is slightly below normal.
+
+HRV:
+58 ms
+```
+
+The interface should explain why the number matters.
+
+---
+
+## Coach Everywhere
+
+Coach guidance is available throughout the application.
+
+Coach is not a dedicated page.
+
+Coach appears naturally within each screen.
+
+Examples:
+
+- Daily Brief
+- Workout Review
+- Progress Summary
+- Goal Analysis
+
+---
+
+## Mobile First
+
+The primary platform is mobile.
+
+Desktop should extend the mobile experience rather than redefine it.
+
+Every component should be designed for small screens first.
+
+---
+
+## Simplicity Before Density
+
+Less information is often more valuable.
+
+Do not display additional metrics unless they help answer a user question.
 
 ---
 
 # Visual Language
 
-## Colors
+The interface should feel:
 
-Colors communicate meaning rather than decoration.
+- Calm
+- Professional
+- Modern
+- Trustworthy
+- Focused
+- Minimal
 
-They indicate:
+Avoid:
 
-- Status
-- Priority
-- Progress
+- Bright gradients
+- Excessive shadows
+- Decorative animations
+- Visual noise
+
+The product should communicate confidence rather than excitement.
+
+---
+
+# Color System
+
+Colors should communicate meaning.
+
+Not decoration.
+
+## Semantic Colors
+
+Primary
+
+Used for:
+
+- Main actions
+- Highlights
+- Active navigation
+
+---
+
+Success
+
+Used for:
+
+- Positive progress
+- Healthy recovery
+- Completed goals
+
+---
+
+Warning
+
+Used for:
+
 - Attention
-
-Neutral information should remain neutral.
-
----
-
-## Typography
-
-Typography should create hierarchy through size and weight instead of excessive styling.
-
-Text should always remain easy to scan.
+- Medium fatigue
+- Training adjustments
 
 ---
 
-## Spacing
+Danger
 
-Whitespace is an active design element.
+Used for:
 
-Spacing improves readability and reduces cognitive load.
-
-Layouts should feel open rather than dense.
-
----
-
-## Components
-
-Components should remain modular and reusable.
-
-A small number of flexible components is preferred over many specialized ones.
+- High injury risk
+- Severe fatigue
+- Critical warnings
 
 ---
 
-# Component Philosophy
+Neutral
 
-Every component should satisfy the following principles:
+Used for:
 
-- Reusable
-- Predictable
-- Accessible
-- Responsive
-- Easy to extend
+- Backgrounds
+- Borders
+- Secondary text
 
-Components should expose only the properties necessary for customization.
+Exact color values should be stored as CSS variables.
 
 ---
 
-# Future Sections
+# Typography
 
-The following chapters will be added as the project evolves:
+Typography should emphasize hierarchy.
 
-- Color System
-- Typography Scale
-- Spacing System
-- Radius System
-- Elevation & Shadows
-- Animation Guidelines
-- Responsive Layout
-- Card System
+Recommended scale:
+
+```text
+Display
+40px
+
+H1
+32px
+
+H2
+24px
+
+H3
+20px
+
+Body
+16px
+
+Small
+14px
+
+Caption
+12px
+```
+
+Weights:
+
+- Regular
+- Medium
+- SemiBold
+- Bold
+
+---
+
+# Spacing System
+
+Use an 8-point spacing system.
+
+Recommended spacing:
+
+```text
+4
+8
+12
+16
+24
+32
+40
+48
+64
+```
+
+Consistent spacing improves readability.
+
+---
+
+# Border Radius
+
+Recommended values:
+
+```text
+8
+12
+16
+24
+```
+
+Cards should primarily use:
+
+```text
+16px
+```
+
+Buttons:
+
+```text
+12px
+```
+
+Pills:
+
+```text
+9999px
+```
+
+---
+
+# Shadows
+
+Shadows should be subtle.
+
+They should separate layers rather than attract attention.
+
+Use elevation sparingly.
+
+---
+
+# Icons
+
+Icons should support understanding.
+
+Icons should never replace text.
+
+Every important icon should have an accompanying label.
+
+---
+
+# Component Hierarchy
+
+Components should be built in layers.
+
+```text
+Primitive
+
+↓
+
+Base Component
+
+↓
+
+Feature Component
+
+↓
+
+Page Section
+
+↓
+
+Screen
+```
+
+---
+
+# Card System
+
+Cards are the primary building block of the interface.
+
+Every card should answer one user question.
+
+Planned card types:
+
+```text
+Base Card
+
+↓
+
+Metric Card
+
+↓
+
+Insight Card
+
+↓
+
+Action Card
+
+↓
+
+Trend Card
+
+↓
+
+Goal Card
+```
+
+Every specialized card should inherit from the Base Card.
+
+---
+
+# Information Priority
+
+Information should always appear in this order:
+
+```text
+Insight
+
+↓
+
+Recommendation
+
+↓
+
+Explanation
+
+↓
+
+Supporting Metrics
+
+↓
+
+Historical Data
+```
+
+Raw charts should never dominate the screen.
+
+---
+
+# Responsiveness
+
+Breakpoints should follow content rather than devices.
+
+Layouts should adapt smoothly.
+
+Recommended strategy:
+
+- Mobile
+- Tablet
+- Desktop
+
+Do not create completely different interfaces for different devices.
+
+---
+
+# Accessibility
+
+The interface should support:
+
+- Keyboard navigation
+- Screen readers
+- High contrast
+- Clear focus states
+- Sufficient touch targets
+
+Accessibility should be considered from the beginning rather than added later.
+
+---
+
+# Animations
+
+Animations should communicate change.
+
+Examples:
+
+- State transitions
+- Card expansion
+- Loading
 - Navigation
-- Forms
-- Charts & Data Visualization
-- Icons
-- AI Coach UI
+
+Avoid decorative animations.
+
+Animations should never distract from decision making.
+
+---
+
+# Design Tokens
+
+Global design tokens should include:
+
+- Colors
+- Typography
+- Spacing
+- Border radius
+- Shadows
+- Animation duration
+- Z-index
+- Breakpoints
+
+All tokens should be stored centrally using CSS variables.
+
+---
+
+# Future Evolution
+
+The design system should support:
+
+- Dark mode
+- Themes
+- Wearable companion UI
+- Tablet layouts
+- Desktop layouts
+- Widget design
+- Notification design
+- AI conversation UI
+
+The visual language should remain consistent across all platforms.
+
+---
+
+# Design Goal
+
+The ideal experience is:
+
+The user opens the application.
+
+Within a few seconds they understand:
+
+- How they are doing
+- Why
+- What they should do next
+
+The interface succeeds when the user leaves with confidence rather than questions.

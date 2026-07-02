@@ -2,11 +2,9 @@
 
 ## Purpose
 
-This document describes the architectural principles and project structure of FitCoach AI.
+This document describes the technical architecture of FitCoach AI.
 
-The goal of the architecture is to build an application that remains scalable, maintainable, and easy to understand throughout its entire lifecycle.
-
-The architecture should support both the initial MVP and future expansion into a complete AI-powered fitness platform.
+The goal of the architecture is to keep the project scalable, understandable, and ready to grow from a frontend MVP into a complete AI-powered coaching platform.
 
 ---
 
@@ -14,115 +12,68 @@ The architecture should support both the initial MVP and future expansion into a
 
 ## Scalability
 
-The project should grow naturally without requiring major restructuring.
+The project should grow without requiring a complete restructuring.
 
-The same architecture should support:
+The architecture should support:
 
-- MVP
-- Hundreds of UI components
-- Multiple business domains
-- Mobile and desktop applications
-- AI services
-- Third-party integrations
+- Multiple pages
+- Reusable UI components
+- Health and training domains
+- Analytics logic
+- AI coaching logic
+- External data integrations
+- Future backend services
 
 ---
 
 ## Separation of Concerns
 
-Each part of the application has a single responsibility.
+Each layer should have a clear responsibility.
 
-Business logic, presentation, routing, and shared utilities should remain independent whenever possible.
+UI should not contain business rules.
 
-Pages compose the application.
+Pages should compose functionality rather than own complex logic.
 
-Domains implement business logic.
+Domain logic should stay close to the business area it belongs to.
 
-Shared contains reusable building blocks.
+Engines should contain cross-domain logic that transforms data into analysis or decisions.
 
 ---
 
 ## Reusability
 
-Reusable code should exist only once.
+Reusable logic should be extracted only when it is genuinely shared.
 
-UI components, utilities, data models, and business logic should be shared whenever possible.
+The project should avoid both extremes:
 
-Specialized implementations should only be created when generic solutions no longer satisfy the requirements.
+- Duplicating the same logic everywhere
+- Over-abstracting too early
 
 ---
 
 ## Product-Oriented Structure
 
-The project structure should reflect the business domain instead of technical file categories.
+The codebase should reflect how the product works.
 
-Instead of organizing code only by component type, the application is organized around real product concepts.
+FitCoach AI is built around:
 
----
+- User context
+- Health and training data
+- Analytics
+- AI-powered decision support
 
-# Architectural Principles
-
-## Domain-Driven Organization
-
-The application is organized around business domains.
-
-Examples:
-
-- Health
-- Training
-- Coach
-- Goals
-- User
-- Integrations
-
-Each domain owns its own logic and evolves independently.
+These concepts should be visible in the project structure.
 
 ---
 
-## Mobile First
-
-FitCoach AI is designed primarily for mobile devices.
-
-Desktop layouts extend the mobile experience instead of replacing it.
-
-All new features should be designed for mobile before desktop adaptations are considered.
-
----
-
-## Dark Theme First
-
-Dark mode is the primary visual target.
-
-Light mode should provide the same user experience without changing layouts or interaction patterns.
-
----
-
-## Data First
-
-The interface exists to explain data.
-
-Visual effects should improve understanding rather than decoration.
-
-Every visual element must support decision making.
-
----
-
-## Progressive Disclosure
-
-Show only the information necessary for the current context.
-
-Additional information should become available through navigation or expansion.
-
-Users should never feel overwhelmed by large amounts of data.
-
----
-
-# Project Structure
+# High-Level Structure
 
 ```text
 src/
 ├── app/
 ├── pages/
 ├── domains/
+├── engines/
 ├── shared/
 ├── styles/
 └── main.tsx
@@ -130,20 +81,13 @@ src/
 
 ---
 
-# Application Layers
+# Layers
 
 ## app
 
-Responsible for application initialization.
+Application-level setup.
 
 Contains:
-
-- Application entry point
-- Routing
-- Providers
-- Global configuration
-
-Examples:
 
 ```text
 App.tsx
@@ -151,41 +95,47 @@ router.tsx
 providers/
 ```
 
-Business logic should not live here.
+Responsibilities:
+
+- Application initialization
+- Routing
+- Global providers
+- App-level configuration
+
+The `app` layer should not contain domain business logic.
 
 ---
 
 ## pages
 
-Contains route-level screens.
+Route-level screens.
 
 Examples:
 
 ```text
-Dashboard
-Analytics
-Coach
-Profile
-Settings
+Dashboard/
+Analytics/
+Goals/
+Profile/
 ```
 
 Responsibilities:
 
-- Compose domains
-- Compose shared UI
-- Arrange layouts
+- Compose domains, engines, and shared UI
+- Define page layout
+- Connect route-level data
 
-Pages should contain as little business logic as possible.
+Pages should stay thin.
+
+They should not become a place for complex business logic.
 
 ---
 
 ## domains
 
-Contains the application's business domains.
+Product-specific business areas.
 
-Each domain owns its own models, logic, services, and UI.
-
-Current planned domains:
+Planned domains:
 
 ```text
 health/
@@ -196,9 +146,9 @@ user/
 integrations/
 ```
 
-Domains represent business knowledge rather than pages.
+A domain owns logic related to one area of the product.
 
-A domain may contain:
+A domain may include:
 
 ```text
 components/
@@ -209,215 +159,342 @@ utils/
 constants/
 ```
 
-Folders should only be added when they become necessary.
+Folders should be created only when needed.
 
 ---
 
-## shared
+## engines
 
-Contains reusable resources that are independent from any single business domain.
+Cross-domain processing systems.
 
-Examples:
+Planned engines:
 
 ```text
-ui/
-api/
-types/
-hooks/
-utils/
-constants/
-styles/
+engines/
+├── analytics/
+└── decision/
 ```
 
-Anything placed inside `shared` should be generic enough to be reused across multiple domains.
+Engines are not pages and not simple shared utilities.
 
-If something belongs to only one business area, it should remain inside its domain.
-
----
-
-## styles
-
-Contains global styling foundations.
-
-Examples:
-
-```text
-variables.css
-reset.css
-global.css
-```
-
-This layer defines the design system foundation:
-
-- Design tokens
-- CSS reset
-- Global styles
-
-Component-specific styles should live alongside their components.
+They represent higher-level product logic.
 
 ---
 
-# Domain Map
+## Analytics Engine
 
-## Health
+Responsible for understanding what is happening.
 
-Responsible for understanding the user's physical condition.
+It works with:
 
-Includes:
-
-- Recovery
-- Sleep
-- HRV
-- Heart Rate
-- Resting Heart Rate
-- Stress
-- Readiness
-- Steps
-- Calories
-- Weight
-- Body Composition
+- Raw data
+- Normalized data
+- Metrics
+- Trends
+- Patterns
+- Anomalies
 
 Main question:
 
-> What is the current state of the user's body?
+> What is happening?
+
+The Analytics Engine prepares structured information for the Decision Engine.
 
 ---
 
-## Training
+## Decision Engine
 
-Responsible for workout analysis.
+Responsible for helping the user decide what to do next.
 
-Includes:
+It works with:
 
-- Workouts
-- Running
-- Cycling
-- Strength
-- Swimming
-- Pace
-- Distance
-- Duration
-- Training Load
-- Training Zones
-- Personal Records
-
-Main question:
-
-> How is the user training?
-
----
-
-## Goals
-
-Responsible for user objectives.
-
-Includes:
-
-- Race goals
-- Weight goals
-- Weekly targets
-- Sleep goals
-- Recovery goals
-- Strength goals
-
-Main question:
-
-> What is the user trying to achieve?
-
----
-
-## Coach
-
-Responsible for AI-generated guidance.
-
-Includes:
-
-- Daily Brief
-- Insights
-- Recommendations
-- Training Suggestions
-- Recovery Advice
-- Feedback Analysis
-- Adaptive Planning
-- Chat
+- Analytics outputs
+- User goals
+- Preferences
+- Feedback
+- Planned workouts
+- Personal context
 
 Main question:
 
 > What should the user do next?
 
+The Decision Engine represents the AI Coach.
+
 ---
 
-## User
+## shared
 
-Responsible for user profile and personalization.
+Reusable generic code.
 
-Includes:
+Examples:
+
+```text
+shared/
+├── ui/
+├── types/
+├── utils/
+├── hooks/
+├── api/
+└── constants/
+```
+
+Use `shared` only for things that are truly reusable across multiple domains or engines.
+
+If something belongs to one product area, keep it inside its domain.
+
+---
+
+## styles
+
+Global style foundation.
+
+Examples:
+
+```text
+styles/
+├── variables.css
+├── reset.css
+└── global.css
+```
+
+Responsibilities:
+
+- Design tokens
+- CSS reset
+- Global styles
+
+Component-specific styles should live near their components.
+
+---
+
+# Dependency Rules
+
+Recommended dependency direction:
+
+```text
+pages
+↓
+engines
+↓
+domains
+↓
+shared
+```
+
+Allowed:
+
+- Pages can import from engines, domains, and shared.
+- Engines can import from domains and shared.
+- Domains can import from shared.
+
+Not allowed:
+
+- Circular dependencies
+- Shared depending on product-specific logic
+- Domains depending directly on pages
+- Pages containing complex business logic
+
+---
+
+# Domain Map
+
+## health
+
+Responsible for physical state.
+
+Examples:
+
+- Recovery
+- Sleep
+- HRV
+- Heart rate
+- Resting heart rate
+- Stress
+- Calories
+- Steps
+- Weight
+
+---
+
+## training
+
+Responsible for workout and performance data.
+
+Examples:
+
+- Workouts
+- Running
+- Cycling
+- Strength training
+- Pace
+- Distance
+- Duration
+- Training load
+- Training zones
+
+---
+
+## goals
+
+Responsible for user goals and progress.
+
+Examples:
+
+- Race goals
+- Weekly volume goals
+- Recovery goals
+- Weight goals
+- Progress tracking
+
+---
+
+## coach
+
+Responsible for coach-related UI and user-facing coach concepts.
+
+Important:
+
+The AI Coach itself belongs to the Decision Engine.
+
+The `coach` domain may contain:
+
+- Coach messages
+- Feedback UI
+- Coach presentation models
+- Coach-specific components
+
+---
+
+## user
+
+Responsible for personal profile and preferences.
+
+Examples:
 
 - Profile
-- Physical characteristics
-- Experience
-- Preferences
+- Experience level
 - Available training days
+- Limitations
 - Injuries
-- Connected devices
-
-Main question:
-
-> Who is the user?
+- Preferences
 
 ---
 
-## Integrations
+## integrations
 
 Responsible for external data providers.
 
-Includes:
+Examples:
 
 - Garmin
 - Apple Health
 - Google Fit
 - Fitbit
 - Polar
-- Manual Import
-
-Main question:
-
-> Where does the data come from?
+- Manual import
 
 ---
 
-# Dependency Rules
-
-Dependencies should follow a single direction.
+# Target Folder Structure
 
 ```text
-pages
-   ↓
-domains
-   ↓
-shared
+src/
+├── app/
+│   ├── App.tsx
+│   └── router.tsx
+│
+├── pages/
+│   ├── Dashboard/
+│   ├── Analytics/
+│   ├── Goals/
+│   └── Profile/
+│
+├── domains/
+│   ├── health/
+│   ├── training/
+│   ├── goals/
+│   ├── coach/
+│   ├── user/
+│   └── integrations/
+│
+├── engines/
+│   ├── analytics/
+│   └── decision/
+│
+├── shared/
+│   ├── ui/
+│   ├── types/
+│   ├── utils/
+│   ├── hooks/
+│   ├── api/
+│   └── constants/
+│
+├── styles/
+│   ├── variables.css
+│   ├── reset.css
+│   └── global.css
+│
+└── main.tsx
 ```
 
-Allowed:
+This structure should grow gradually.
 
-- Pages may import domains and shared.
-- Domains may import shared.
+Empty folders should be avoided unless they clarify an already accepted architectural direction.
 
-Not allowed:
-
-- Shared importing domains.
-- Shared importing pages.
-- Circular dependencies between domains.
-
-If multiple domains require the same functionality, it should be moved into `shared`.
+The `engines` layer is an accepted direction because Analytics Engine and Decision Engine are core parts of the product model.
 
 ---
 
-# Architectural Decisions
+# State Management Strategy
 
-## Why not Layer-Based Architecture?
+The project should start with local React state where possible.
 
-A traditional structure like:
+Global state should be introduced only when data is shared across multiple distant parts of the application.
+
+Possible future tools:
+
+- React Context for simple app-level state
+- Zustand or Redux Toolkit for complex global state
+- TanStack Query for server state and caching
+
+State should be categorized as:
+
+```text
+UI state
+Server state
+Domain state
+Engine output
+```
+
+These categories should not be mixed without reason.
+
+---
+
+# Styling Strategy
+
+FitCoach AI uses custom CSS instead of UI component libraries.
+
+Preferred approach:
+
+- CSS Modules for component-level styles
+- CSS variables for design tokens
+- Global styles only for base application styles
+
+Reasons:
+
+- Full control over visual identity
+- Better long-term scalability
+- Stronger portfolio value
+- No dependency on external UI design decisions
+
+---
+
+# Design Decisions
+
+## Why Domain-Driven Frontend Architecture?
+
+A simple structure like this:
 
 ```text
 components/
@@ -427,76 +504,91 @@ utils/
 types/
 ```
 
-becomes increasingly difficult to maintain as the project grows.
+works for small projects but becomes difficult to maintain as the product grows.
 
-Large folders organized only by file type make navigation harder and disconnect the codebase from the product itself.
-
----
-
-## Why Domain-Driven Architecture?
-
-Business concepts remain together.
-
-Everything related to Recovery belongs together.
-
-Everything related to Training belongs together.
-
-This makes the project easier to understand, extend, and maintain.
+FitCoach AI uses product-oriented folders because the product is built around meaningful business areas.
 
 ---
 
-## Why Custom CSS?
+## Why Engines?
 
-FitCoach AI uses a custom design system instead of UI component libraries.
+Analytics and decision-making are not simple utilities.
 
-Reasons:
+They are central product systems.
 
-- Full control over the visual language.
-- Consistent branding.
-- Better long-term scalability.
-- No dependency on third-party design decisions.
-- Stronger engineering and portfolio value.
+They work across several domains and should not be hidden inside one domain folder.
 
-Specialized libraries may still be used when they solve a focused technical problem (for example, data visualization).
+The `engines` layer makes this responsibility visible.
 
 ---
 
-# Current Status
+## Why Not Treat Coach as a Page?
 
-Completed:
+AI Coach is not only a screen.
 
-- Project initialization
-- Initial README
-- Shared domain types
-- Design tokens
-- Global styles
-- Documentation foundation
+Coach is a decision-making system that should appear across the product.
 
-Next milestones:
+The user should receive coach guidance on:
 
-- Design System
-- Card System
-- Dashboard Layout
-- Navigation
-- Dashboard MVP
-- Analytics
-- AI Coach
-- Device Integrations
+- Today screen
+- Progress screen
+- Goals screen
+- Workout review
+- Future notifications
+
+The Decision Engine owns coaching logic.
+
+UI surfaces only display its outputs.
 
 ---
 
 # Future Evolution
 
-This document is expected to evolve together with the project.
+The architecture may later evolve to include:
 
-Future revisions will include:
-
-- State management strategy
-- API architecture
-- Authentication flow
+- Backend services
+- Authentication
+- Real device integrations
+- Server-side analytics
+- AI recommendation service
+- Notification system
+- Mobile application
 - Offline support
-- Caching strategy
 - Testing strategy
-- Performance guidelines
-- Mobile application architecture
-- Backend architecture
+- Performance monitoring
+
+The frontend architecture should remain aligned with the future backend architecture where possible.
+
+Potential future backend services:
+
+```text
+Analytics Service
+Decision Service
+Integration Service
+Notification Service
+User Service
+```
+
+---
+
+# Current Status
+
+Current stage:
+
+```text
+Documentation foundation
+Design system foundation
+Shared domain types
+Global styles
+```
+
+Next implementation focus:
+
+```text
+Card System
+Base Card
+Metric Card
+Insight Card
+Today screen layout
+Mobile-first navigation
+```

@@ -2,188 +2,353 @@
 
 ## Purpose
 
-This document describes the main user flows of FitCoach AI.
+This document describes the primary user journeys within FitCoach AI.
 
-User flows help define what the user wants to achieve before we design pages, components, or layouts.
+The goal is to define what users want to accomplish rather than how screens should look.
 
-The goal is to make sure every screen solves a real user problem.
-
----
-
-# Core Principle
-
-FitCoach AI should not behave like a passive dashboard.
-
-The application should help the user answer one main question:
-
-> What should I do today?
+Every screen, component, and interaction should support one or more of these flows.
 
 ---
 
-# Flow 1: Morning Check
+# Product Philosophy
+
+Users do not open FitCoach AI to inspect metrics.
+
+They open the application to answer questions such as:
+
+- Should I train today?
+- Why do I feel different?
+- Am I improving?
+- What should I do next?
+
+The application exists to support these decisions.
+
+---
+
+# Core User Journey
+
+Every interaction should follow the same high-level flow.
+
+```text
+Open App
+↓
+Understand Current State
+↓
+Understand Why
+↓
+Receive Recommendation
+↓
+Make Decision
+↓
+Take Action
+↓
+Measure Results
+```
+
+The product should minimize the time required to reach a confident decision.
+
+---
+
+# Flow 1 — Morning Check
 
 ## User Goal
 
-The user opens the app in the morning to understand their current condition and decide whether they should train hard, train easy, or recover.
-
-## Main Screen
-
-Dashboard
-
-## User Questions
-
-- Am I ready to train today?
-- How recovered am I?
-- Did I sleep well?
-- Is my body showing signs of fatigue?
-- What should I do today?
-
-## Information Priority
-
-1. Daily Brief
-2. Readiness / Recovery Score
-3. AI Coach Recommendation
-4. Today’s Planned Workout
-5. Key Supporting Metrics
-6. Recent Trend
-
-## Expected Result
-
-The user should understand their training readiness within 5–10 seconds.
+Understand today's condition before training.
 
 ---
 
-# Flow 2: After Workout Review
+## Questions
 
-## User Goal
-
-The user opens the app after training to understand how the workout went and how it affected progress.
-
-## Main Screen
-
-Workout Detail
-
-## User Questions
-
-- Was this a good workout?
-- Was the intensity appropriate?
-- How did my heart rate respond?
-- Did I improve compared to similar workouts?
-- Should I adjust the next workout?
-
-## Information Priority
-
-1. Workout Summary
-2. AI Workout Analysis
-3. Training Effect
-4. Heart Rate / Pace / Power Metrics
-5. Splits and Zones
-6. Comparison With Previous Workouts
-
-## Expected Result
-
-The user should understand whether the workout helped, overloaded, or maintained their progress.
+- How is my body today?
+- Should I train?
+- Why?
+- What should I focus on?
 
 ---
 
-# Flow 3: Weekly Review
+## Expected Experience
 
-## User Goal
+The user opens the application.
 
-The user checks weekly progress and understands whether their training direction is correct.
+The first thing they see is a Daily Brief.
 
-## Main Screen
+Example:
 
-Analytics
+```text
+Recovery is good today.
 
-## User Questions
+You are ready for your planned threshold session.
 
-- Did I train consistently this week?
-- Did I recover enough?
-- Is my load increasing too fast?
-- Am I moving toward my goal?
-- What should I change next week?
+Pay attention to hydration because temperatures are expected to be high.
+```
 
-## Information Priority
+Supporting metrics are available below.
 
-1. Weekly Summary
-2. Training Volume
-3. Recovery Trend
-4. Consistency
-5. Goal Progress
-6. AI Weekly Recommendation
-
-## Expected Result
-
-The user should understand the main pattern of the week and what to focus on next.
+The user should understand today's situation in less than 10 seconds.
 
 ---
 
-# Flow 4: Goal Tracking
+# Flow 2 — Workout Review
 
 ## User Goal
 
-The user wants to understand progress toward a specific goal.
+Understand how today's workout affected progress.
 
-## Main Screen
+---
+
+## Questions
+
+- Was today's workout successful?
+- Did I train too hard?
+- Did I improve?
+- What should I do tomorrow?
+
+---
+
+## Expected Experience
+
+The workout summary appears first.
+
+The coach explains the result.
+
+Only then are detailed metrics presented.
+
+Examples:
+
+- Pace
+- Heart rate
+- Training load
+- Splits
+- Zones
+
+---
+
+# Flow 3 — Weekly Review
+
+## User Goal
+
+Understand long-term progress.
+
+---
+
+## Questions
+
+- Am I improving?
+- Am I recovering enough?
+- Is my training balanced?
+- What should change next week?
+
+---
+
+## Expected Experience
+
+The coach summarizes the week.
+
+The application highlights:
+
+- Successes
+- Risks
+- Trends
+- Recommendations
+
+Supporting charts remain secondary.
+
+---
+
+# Flow 4 — Goal Tracking
+
+## User Goal
+
+Understand progress toward a personal goal.
+
+Examples:
+
+- Marathon
+- Weight loss
+- Weekly running distance
+- Recovery consistency
+
+---
+
+## Questions
+
+- Am I on track?
+- What is limiting progress?
+- What should I change?
+
+---
+
+## Expected Experience
+
+The application explains:
+
+Current status
+
+↓
+
+Progress trend
+
+↓
+
+Recommendation
+
+↓
+
+Supporting data
+
+---
+
+# Flow 5 — Coach Interaction
+
+## User Goal
+
+Ask for additional guidance.
+
+Coach is available throughout the application.
+
+Examples:
+
+- Why is recovery lower?
+- Why did today's recommendation change?
+- Should I replace tomorrow's workout?
+- Why is my HRV decreasing?
+
+Coach always responds using the user's current context.
+
+The user should never need to manually explain which workout or metric they are referring to.
+
+---
+
+# Decision Flow
+
+Every recommendation follows the same structure.
+
+```text
+Context
+↓
+Insight
+↓
+Explanation
+↓
+Recommendation
+↓
+User Decision
+↓
+Outcome
+```
+
+The explanation is mandatory.
+
+Recommendations without explanations reduce trust.
+
+---
+
+# Information Priority
+
+Each screen should prioritize information in this order.
+
+```text
+Coach Insight
+↓
+Recommended Action
+↓
+Explanation
+↓
+Supporting Metrics
+↓
+Historical Data
+```
+
+Raw data should never appear before the conclusion.
+
+---
+
+# Cross-Screen Coach
+
+AI Coach is not a dedicated page.
+
+Coach appears naturally throughout the application.
+
+Examples:
+
+Today
+
+- Daily Brief
+- Readiness explanation
+
+Workout
+
+- Performance analysis
+- Recovery impact
+
+Progress
+
+- Trend explanation
 
 Goals
 
-## User Questions
-
-- Am I on track?
-- What is my current progress?
-- What is blocking me?
-- What should I do next?
-- Is my goal still realistic?
-
-## Information Priority
-
-1. Goal Status
-2. Current Progress
-3. Prediction
-4. Limiting Factors
-5. Coach Recommendation
-6. Next Actions
-
-## Expected Result
-
-The user should clearly understand whether they are on track and what action matters most.
+- Goal guidance
+- Progress prediction
 
 ---
 
-# Design Implications
+# User Feedback Loop
 
-## Dashboard
+The application continuously improves recommendations.
 
-Dashboard should start with decision-support content, not raw metrics.
+```text
+Recommendation
+↓
+User Decision
+↓
+Workout
+↓
+New Data
+↓
+Updated Context
+↓
+Better Recommendation
+```
 
-Recommended order:
+Every interaction helps the system understand the user better.
 
-1. Daily Brief
-2. AI Recommendation
-3. Readiness / Recovery
-4. Today’s Workout
-5. Key Metrics
-6. Recent Activity
+---
 
-## Cards
+# Success Criteria
 
-Cards should support different levels of detail:
+Every primary flow should allow the user to answer three questions quickly.
 
-- Summary
-- Trend
-- Breakdown
-- Recommendation
-- Timeline
-- Goal progress
+1. What is happening?
+2. Why is it happening?
+3. What should I do next?
 
-## Navigation
+If the interface fails to answer these questions clearly, the flow should be redesigned.
 
-The primary mobile navigation should focus on core user tasks:
+---
 
-- Today
-- Analytics
-- Coach
-- Goals
-- Profile
+# Future Flows
+
+The architecture should support future scenarios without major redesign.
+
+Examples:
+
+- Smart notifications
+- Wearable notifications
+- Adaptive training plans
+- Injury prevention
+- Nutrition guidance
+- AI chat
+- Race preparation
+- Calendar integration
+
+Future functionality should extend existing flows rather than introduce completely different interaction patterns.
+
+---
+
+# Design Principle
+
+Every user flow should end with confidence.
+
+The user should leave the application knowing exactly what to do next.
+
+If the product creates uncertainty instead of clarity, the flow has failed.

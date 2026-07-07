@@ -1,4 +1,9 @@
-import { BaseCard, InsightCard, MetricCard } from "../../shared/ui/card";
+import {
+  ActionCard,
+  ActivityCard,
+  InsightCard,
+  MetricCard,
+} from "../../shared/ui/card";
 
 import styles from "./TodayPage.module.css";
 
@@ -27,19 +32,12 @@ export function TodayPage({ data }: TodayPageProps) {
       </section>
 
       <section className={styles.section}>
-        <BaseCard
+        <ActionCard
           title={data.recommendation.title}
           subtitle={data.recommendation.subtitle}
-        >
-          <div className={styles.recommendation}>
-            <p className={styles.recommendationTitle}>
-              {data.recommendation.name}
-            </p>
-            <p className={styles.recommendationText}>
-              {data.recommendation.description}
-            </p>
-          </div>
-        </BaseCard>
+          actionTitle={data.recommendation.name}
+          description={data.recommendation.description}
+        />
       </section>
 
       <section className={styles.section}>
@@ -51,17 +49,12 @@ export function TodayPage({ data }: TodayPageProps) {
       </section>
 
       <section className={styles.section}>
-        <BaseCard
+        <ActivityCard
           title={data.recentActivity.title}
           subtitle={data.recentActivity.subtitle}
-        >
-          <div className={styles.activity}>
-            <p className={styles.activityTitle}>{data.recentActivity.name}</p>
-            <p className={styles.activityText}>
-              {data.recentActivity.description}
-            </p>
-          </div>
-        </BaseCard>
+          activityTitle={data.recentActivity.name}
+          description={data.recentActivity.description}
+        />
       </section>
     </div>
   );

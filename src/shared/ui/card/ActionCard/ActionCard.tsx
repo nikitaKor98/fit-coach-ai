@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { BaseCard } from "../BaseCard/BaseCard";
 
 import styles from "./ActionCard.module.css";
+import contentStyles from "../cardContent.module.css";
 
 type ActionCardProps = {
   title: string;
@@ -28,9 +29,9 @@ export function ActionCard({
       footer={footer}
       variant={variant}
     >
-      <div className={styles.action}>
-        <p className={styles.title}>{actionTitle}</p>
-        <p className={styles.description}>{description}</p>
+      <div className={contentStyles.content}>
+        <p className={contentStyles.title}>{actionTitle}</p>
+        <p className={contentStyles.description}>{description}</p>
       </div>
     </BaseCard>
   );

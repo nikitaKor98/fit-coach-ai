@@ -1,6 +1,7 @@
 import { BaseCard } from "../BaseCard/BaseCard";
 
 import styles from "./InsightCard.module.css";
+import contentStyles from "../cardContent.module.css";
 
 type InsightCardProps = {
   title: string;
@@ -19,9 +20,9 @@ export function InsightCard({
 }: InsightCardProps) {
   return (
     <BaseCard title={title} subtitle={subtitle} variant={variant}>
-      <div className={styles.insight}>
-        <p className={styles.title}>{insight}</p>
-        <p className={styles.explanation}>{explanation}</p>
+      <div className={contentStyles.content}>
+        <p className={contentStyles.title}>{insight}</p>
+        <p className={contentStyles.description}>{explanation}</p>
       </div>
     </BaseCard>
   );

@@ -1,10 +1,11 @@
+import { todayMockData } from "../pages/Today/today.mock";
 import { TodayPage } from "../pages/Today/TodayPage";
 import { AppShell } from "../shared/ui/layout/AppShell/AppShell";
 
 export default function App() {
   return (
     <AppShell>
-      <TodayPage />
+      <TodayPage data={todayMockData} />
     </AppShell>
   );
 }

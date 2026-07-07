@@ -34,7 +34,6 @@
   width: 100%;
 }
 
-.brief,
 .recommendation,
 .activity {
   display: flex;
@@ -42,7 +41,6 @@
   gap: var(--space-2);
 }
 
-.briefTitle,
 .recommendationTitle,
 .activityTitle {
   color: var(--color-text-primary);
@@ -51,7 +49,6 @@
   line-height: var(--line-height-tight);
 }
 
-.briefText,
 .recommendationText,
 .activityText {
   color: var(--color-text-secondary);

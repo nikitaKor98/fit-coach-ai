@@ -1,5 +1,4 @@
-import { BaseCard } from "../../shared/ui/card/BaseCard/BaseCard";
-import { MetricCard } from "../../shared/ui/card/MetricCard/MetricCard";
+import { BaseCard, InsightCard, MetricCard } from "../../shared/ui/card";
 
 import styles from "./TodayPage.module.css";
 
@@ -19,16 +18,12 @@ export function TodayPage({ data }: TodayPageProps) {
       </header>
 
       <section className={styles.section}>
-        <BaseCard
+        <InsightCard
           title={data.dailyBrief.title}
           subtitle={data.dailyBrief.subtitle}
-          variant="highlighted"
-        >
-          <div className={styles.brief}>
-            <p className={styles.briefTitle}>{data.dailyBrief.status}</p>
-            <p className={styles.briefText}>{data.dailyBrief.description}</p>
-          </div>
-        </BaseCard>
+          insight={data.dailyBrief.status}
+          explanation={data.dailyBrief.description}
+        />
       </section>
 
       <section className={styles.section}>

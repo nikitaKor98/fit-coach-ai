@@ -1,7 +1,10 @@
+import { TodayPage } from "../pages/Today/TodayPage";
+import { AppShell } from "../shared/ui/layout/AppShell/AppShell";
+
 export default function App() {
   return (
-    <div>
-      <h1>Hello, World!</h1>
-    </div>
+    <AppShell>
+      <TodayPage />
+    </AppShell>
   );
 }

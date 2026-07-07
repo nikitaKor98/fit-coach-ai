@@ -1,4 +1,5 @@
 import { BaseCard } from "../../shared/ui/card/BaseCard/BaseCard";
+import { MetricCard } from "../../shared/ui/card/MetricCard/MetricCard";
 
 import styles from "./TodayPage.module.css";
 
@@ -49,15 +50,7 @@ export function TodayPage({ data }: TodayPageProps) {
       <section className={styles.section}>
         <div className={styles.grid}>
           {data.metrics.map((metric) => (
-            <BaseCard key={metric.id} title={metric.label}>
-              <div className={styles.metric}>
-                <span className={styles.metricValue}>
-                  {metric.value}
-                  {metric.unit}
-                </span>
-                <span className={styles.metricLabel}>{metric.status}</span>
-              </div>
-            </BaseCard>
+            <MetricCard key={metric.id} metric={metric} />
           ))}
         </div>
       </section>

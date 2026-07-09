@@ -1,6 +1,6 @@
 import { BaseCard } from "../BaseCard/BaseCard";
 
-import styles from "./ActivityCard.module.css";
+// import styles from "./ActivityCard.module.css";
 import contentStyles from "../cardContent.module.css";
 
 type ActivityCardProps = {

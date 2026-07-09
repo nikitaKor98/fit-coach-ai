@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 import { BaseCard } from "../BaseCard/BaseCard";
 
-import styles from "./ActionCard.module.css";
+// import styles from "./ActionCard.module.css";
 import contentStyles from "../cardContent.module.css";
 
 type ActionCardProps = {

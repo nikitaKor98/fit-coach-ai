@@ -1,5 +1,12 @@
+export type NavigationItemId =
+  | "today"
+  | "progress"
+  | "ask"
+  | "goals"
+  | "profile";
+
 export type NavigationItem = {
-  id: string;
+  id: NavigationItemId;
   label: string;
   isActive?: boolean;
   isPrimary?: boolean;

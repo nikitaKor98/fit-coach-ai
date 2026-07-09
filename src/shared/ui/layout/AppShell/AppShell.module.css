@@ -6,7 +6,7 @@
 .main {
   width: 100%;
   min-height: 100vh;
-  padding: var(--space-5) var(--space-4);
+  padding: var(--space-5) var(--space-4) 104px;
   margin: 0 auto;
 }
 
@@ -14,7 +14,7 @@
 @media (min-width: 768px) {
   .main {
     max-width: 720px;
-    padding: var(--space-8) var(--space-6);
+    padding: var(--space-8) var(--space-6) 120px;
   }
 }
 
@@ -22,7 +22,7 @@
 @media (min-width: 1024px) {
   .main {
     max-width: 960px;
-    padding: var(--space-10) var(--space-8);
+    padding: var(--space-10) var(--space-8) 128px;
   }
 }
 

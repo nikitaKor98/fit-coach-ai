@@ -2,20 +2,13 @@ import { createTodayViewModel } from "../pages/Today/today.viewModel";
 import { TodayPage } from "../pages/Today/TodayPage";
 import { AppShell } from "../shared/ui/layout/AppShell/AppShell";
 import { BottomNavigation } from "../shared/ui/navigation/BottomNavigation/BottomNavigation";
+import { navigationMock } from "../shared/ui/navigation/navigation.mock";
 
 const todayViewModel = createTodayViewModel();
 
-const navigationItems = [
-  { id: "today", label: "Today", isActive: true },
-  { id: "progress", label: "Progress" },
-  { id: "ask", label: "Ask", isPrimary: true },
-  { id: "goals", label: "Goals" },
-  { id: "profile", label: "Profile" },
-];
-
 function App() {
   return (
-    <AppShell navigation={<BottomNavigation items={navigationItems} />}>
+    <AppShell navigation={<BottomNavigation items={navigationMock} />}>
       <TodayPage data={todayViewModel} />
     </AppShell>
   );

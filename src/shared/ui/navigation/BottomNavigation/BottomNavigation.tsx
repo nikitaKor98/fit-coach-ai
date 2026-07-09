@@ -1,14 +1,9 @@
+import type { NavigationItem } from "../navigation.types";
+
 import styles from "./BottomNavigation.module.css";
 
-export type BottomNavigationItem = {
-  id: string;
-  label: string;
-  isActive?: boolean;
-  isPrimary?: boolean;
-};
-
 type BottomNavigationProps = {
-  items: BottomNavigationItem[];
+  items: NavigationItem[];
 };
 
 export function BottomNavigation({ items }: BottomNavigationProps) {

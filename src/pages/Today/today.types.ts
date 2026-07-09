@@ -1,28 +1,36 @@
 import type { Metric } from "../../shared/types";
 
-export type TodayPageData = {
-  header: {
-    eyebrow: string;
-    title: string;
-    subtitle: string;
-  };
-  dailyBrief: {
-    title: string;
-    subtitle: string;
-    status: string;
-    description: string;
-  };
-  recommendation: {
-    title: string;
-    subtitle: string;
-    name: string;
-    description: string;
-  };
+export type TodayHeaderViewModel = {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+};
+
+export type TodayBriefViewModel = {
+  title: string;
+  subtitle: string;
+  insight: string;
+  explanation: string;
+};
+
+export type TodayRecommendationViewModel = {
+  title: string;
+  subtitle: string;
+  actionTitle: string;
+  description: string;
+};
+
+export type TodayActivityViewModel = {
+  title: string;
+  subtitle: string;
+  activityTitle: string;
+  description: string;
+};
+
+export type TodayPageViewModel = {
+  header: TodayHeaderViewModel;
+  dailyBrief: TodayBriefViewModel;
+  recommendation: TodayRecommendationViewModel;
   metrics: Metric[];
-  recentActivity: {
-    title: string;
-    subtitle: string;
-    name: string;
-    description: string;
-  };
+  recentActivity: TodayActivityViewModel;
 };

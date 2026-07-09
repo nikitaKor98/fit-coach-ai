@@ -7,10 +7,10 @@ import {
 
 import styles from "./TodayPage.module.css";
 
-import type { TodayPageData } from "./today.types";
+import type { TodayPageViewModel } from "./today.types";
 
 type TodayPageProps = {
-  data: TodayPageData;
+  data: TodayPageViewModel;
 };
 
 export function TodayPage({ data }: TodayPageProps) {
@@ -26,8 +26,8 @@ export function TodayPage({ data }: TodayPageProps) {
         <InsightCard
           title={data.dailyBrief.title}
           subtitle={data.dailyBrief.subtitle}
-          insight={data.dailyBrief.status}
-          explanation={data.dailyBrief.description}
+          insight={data.dailyBrief.insight}
+          explanation={data.dailyBrief.explanation}
         />
       </section>
 
@@ -35,7 +35,7 @@ export function TodayPage({ data }: TodayPageProps) {
         <ActionCard
           title={data.recommendation.title}
           subtitle={data.recommendation.subtitle}
-          actionTitle={data.recommendation.name}
+          actionTitle={data.recommendation.actionTitle}
           description={data.recommendation.description}
         />
       </section>
@@ -52,7 +52,7 @@ export function TodayPage({ data }: TodayPageProps) {
         <ActivityCard
           title={data.recentActivity.title}
           subtitle={data.recentActivity.subtitle}
-          activityTitle={data.recentActivity.name}
+          activityTitle={data.recentActivity.activityTitle}
           description={data.recentActivity.description}
         />
       </section>

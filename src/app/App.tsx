@@ -1,11 +1,15 @@
-import { todayMockData } from "../pages/Today/today.mock";
+import { createTodayViewModel } from "../pages/Today/today.viewModel";
 import { TodayPage } from "../pages/Today/TodayPage";
 import { AppShell } from "../shared/ui/layout/AppShell/AppShell";
 
-export default function App() {
+const todayViewModel = createTodayViewModel();
+
+function App() {
   return (
     <AppShell>
-      <TodayPage data={todayMockData} />
+      <TodayPage data={todayViewModel} />
     </AppShell>
   );
 }
+
+export default App;

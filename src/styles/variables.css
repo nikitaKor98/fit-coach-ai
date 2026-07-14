@@ -13,8 +13,10 @@
   --color-accent-secondary: #7c5cff;
 
   --color-success: #22c55e;
+  --color-success-subtle: rgba(52, 199, 89, 0.12);
   --color-warning: #f59e0b;
   --color-danger: #ef4444;
+  --color-danger-subtle: rgba(255, 69, 58, 0.12);
   --color-info: #38bdf8;
 
   --color-border: rgba(255, 255, 255, 0.08);

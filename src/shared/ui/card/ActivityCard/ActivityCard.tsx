@@ -1,14 +1,11 @@
 import { BaseCard } from "../BaseCard/BaseCard";
 
+import type { ActivityCardData } from "../card.types";
+
 // import styles from "./ActivityCard.module.css";
 import contentStyles from "../cardContent.module.css";
 
-type ActivityCardProps = {
-  title: string;
-  subtitle?: string;
-  activityTitle: string;
-  description: string;
-};
+type ActivityCardProps = ActivityCardData;
 
 export function ActivityCard({
   title,

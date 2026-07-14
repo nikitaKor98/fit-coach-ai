@@ -1,7 +1,9 @@
 import type { ReactNode } from "react";
+
 import styles from "./BaseCard.module.css";
 
-type BaseCardVariant = "default" | "highlighted" | "muted";
+export type BaseCardVariant = "default" | "highlighted" | "muted";
+
 type BaseCardPadding = "sm" | "md" | "lg";
 
 type BaseCardProps = {

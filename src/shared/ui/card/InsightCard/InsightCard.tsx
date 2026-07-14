@@ -1,14 +1,12 @@
-import { BaseCard } from "../BaseCard/BaseCard";
+import { BaseCard, type BaseCardVariant } from "../BaseCard/BaseCard";
+
+import type { InsightCardData } from "../card.types";
 
 // import styles from "./InsightCard.module.css";
 import contentStyles from "../cardContent.module.css";
 
-type InsightCardProps = {
-  title: string;
-  subtitle?: string;
-  insight: string;
-  explanation: string;
-  variant?: "default" | "highlighted" | "muted";
+type InsightCardProps = InsightCardData & {
+  variant?: BaseCardVariant;
 };
 
 export function InsightCard({

@@ -1,4 +1,11 @@
 import type { Metric } from "../../shared/types";
+import type {
+  ActionCardData,
+  ActivityCardData,
+  InsightCardData,
+  TrendCardData,
+  UpcomingWorkoutCardData,
+} from "../../shared/ui/card";
 
 export type TodayHeaderViewModel = {
   eyebrow: string;
@@ -6,43 +13,12 @@ export type TodayHeaderViewModel = {
   subtitle: string;
 };
 
-export type TodayBriefViewModel = {
-  title: string;
-  subtitle: string;
-  insight: string;
-  explanation: string;
-};
-
-export type TodayRecommendationViewModel = {
-  title: string;
-  subtitle: string;
-  actionTitle: string;
-  description: string;
-};
-
-export type TodayActivityViewModel = {
-  title: string;
-  subtitle: string;
-  activityTitle: string;
-  description: string;
-};
-
 export type TodayPageViewModel = {
   header: TodayHeaderViewModel;
-  dailyBrief: TodayBriefViewModel;
-  recommendation: TodayRecommendationViewModel;
-  upcomingWorkout: TodayUpcomingWorkoutViewModel;
+  dailyBrief: InsightCardData;
+  recommendation: ActionCardData;
+  upcomingWorkout: UpcomingWorkoutCardData;
   metrics: Metric[];
-  recentActivity: TodayActivityViewModel;
-};
-
-export type TodayUpcomingWorkoutViewModel = {
-  title: string;
-  subtitle?: string;
-  workoutName: string;
-  duration?: string;
-  distance?: string;
-  intensity?: string;
-  startTime?: string;
-  description?: string;
+  recoveryTrend: TrendCardData;
+  recentActivity: ActivityCardData;
 };

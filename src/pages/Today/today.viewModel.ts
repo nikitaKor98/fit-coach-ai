@@ -38,5 +38,14 @@ export function createTodayViewModel(): TodayPageViewModel {
       startTime: todayMock.upcomingWorkout.startTime,
       description: todayMock.upcomingWorkout.description,
     },
+    recoveryTrend: {
+      title: "Recovery Trend",
+      subtitle: "Last 7 days",
+      summary: todayMock.recoveryTrend.summary,
+      description: todayMock.recoveryTrend.description,
+      direction: todayMock.recoveryTrend.direction,
+      change: todayMock.recoveryTrend.change,
+      points: todayMock.recoveryTrend.values,
+    },
   };
 }

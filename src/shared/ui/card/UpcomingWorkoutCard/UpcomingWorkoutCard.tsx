@@ -1,18 +1,11 @@
 import { BaseCard } from "../BaseCard/BaseCard";
 
+import type { UpcomingWorkoutCardData } from "../card.types";
+
 import contentStyles from "../cardContent.module.css";
 import styles from "./UpcomingWorkoutCard.module.css";
 
-type UpcomingWorkoutCardProps = {
-  title: string;
-  subtitle?: string;
-  workoutName: string;
-  duration?: string;
-  distance?: string;
-  intensity?: string;
-  startTime?: string;
-  description?: string;
-};
+type UpcomingWorkoutCardProps = UpcomingWorkoutCardData;
 
 export function UpcomingWorkoutCard({
   title,

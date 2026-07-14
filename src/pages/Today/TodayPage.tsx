@@ -3,6 +3,7 @@ import {
   ActivityCard,
   InsightCard,
   MetricCard,
+  TrendCard,
   UpcomingWorkoutCard,
 } from "../../shared/ui/card";
 
@@ -33,6 +34,15 @@ export function TodayPage({ data }: TodayPageProps) {
       </section>
 
       <section className={styles.section}>
+        <ActionCard
+          title={data.recommendation.title}
+          subtitle={data.recommendation.subtitle}
+          actionTitle={data.recommendation.actionTitle}
+          description={data.recommendation.description}
+        />
+      </section>
+
+      <section className={styles.section}>
         <UpcomingWorkoutCard
           title={data.upcomingWorkout.title}
           subtitle={data.upcomingWorkout.subtitle}
@@ -46,20 +56,23 @@ export function TodayPage({ data }: TodayPageProps) {
       </section>
 
       <section className={styles.section}>
-        <ActionCard
-          title={data.recommendation.title}
-          subtitle={data.recommendation.subtitle}
-          actionTitle={data.recommendation.actionTitle}
-          description={data.recommendation.description}
-        />
-      </section>
-
-      <section className={styles.section}>
         <div className={styles.grid}>
           {data.metrics.map((metric) => (
             <MetricCard key={metric.id} metric={metric} />
           ))}
         </div>
+      </section>
+
+      <section className={styles.section}>
+        <TrendCard
+          title={data.recoveryTrend.title}
+          subtitle={data.recoveryTrend.subtitle}
+          summary={data.recoveryTrend.summary}
+          description={data.recoveryTrend.description}
+          direction={data.recoveryTrend.direction}
+          change={data.recoveryTrend.change}
+          points={data.recoveryTrend.points}
+        />
       </section>
 
       <section className={styles.section}>

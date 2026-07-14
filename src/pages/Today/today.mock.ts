@@ -44,4 +44,20 @@ export const todayMock = {
     description:
       "Complete the session at a controlled effort and keep the final interval smooth.",
   },
+  recoveryTrend: {
+    values: [
+      { id: "mon", label: "Mon", value: 72 },
+      { id: "tue", label: "Tue", value: 76 },
+      { id: "wed", label: "Wed", value: 74 },
+      { id: "thu", label: "Thu", value: 79 },
+      { id: "fri", label: "Fri", value: 82 },
+      { id: "sat", label: "Sat", value: 84 },
+      { id: "sun", label: "Sun", value: 87 },
+    ],
+    direction: "up" as const,
+    change: "8% this week",
+    summary: "Recovery is improving",
+    description:
+      "Your recovery has gradually increased during the last seven days.",
+  },
 };

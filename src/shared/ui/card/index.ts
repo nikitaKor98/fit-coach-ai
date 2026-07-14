@@ -1,6 +1,15 @@
-export { BaseCard } from "./BaseCard/BaseCard";
+export { BaseCard, type BaseCardVariant } from "./BaseCard/BaseCard";
 export { MetricCard } from "./MetricCard/MetricCard";
 export { InsightCard } from "./InsightCard/InsightCard";
 export { ActionCard } from "./ActionCard/ActionCard";
 export { ActivityCard } from "./ActivityCard/ActivityCard";
 export { UpcomingWorkoutCard } from "./UpcomingWorkoutCard/UpcomingWorkoutCard";
+export { TrendCard } from "./TrendCard/TrendCard";
+
+export type {
+  ActionCardData,
+  ActivityCardData,
+  InsightCardData,
+  TrendCardData,
+  UpcomingWorkoutCardData,
+} from "./card.types";

@@ -1,17 +1,15 @@
 import type { ReactNode } from "react";
 
-import { BaseCard } from "../BaseCard/BaseCard";
+import { BaseCard, type BaseCardVariant } from "../BaseCard/BaseCard";
+
+import type { ActionCardData } from "../card.types";
 
 // import styles from "./ActionCard.module.css";
 import contentStyles from "../cardContent.module.css";
 
-type ActionCardProps = {
-  title: string;
-  subtitle?: string;
-  actionTitle: string;
-  description: string;
+type ActionCardProps = ActionCardData & {
   footer?: ReactNode;
-  variant?: "default" | "highlighted" | "muted";
+  variant?: BaseCardVariant;
 };
 
 export function ActionCard({

@@ -9,6 +9,7 @@
   font-size: var(--font-size-xl);
   font-weight: 700;
   line-height: var(--line-height-tight);
+  overflow-wrap: anywhere;
 }
 
 .status {

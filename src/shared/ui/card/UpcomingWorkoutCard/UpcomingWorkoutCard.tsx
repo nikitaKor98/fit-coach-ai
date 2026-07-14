@@ -16,11 +16,12 @@ export function UpcomingWorkoutCard({
   intensity,
   startTime,
   description,
+  variant = "default",
 }: UpcomingWorkoutCardProps) {
   const details = [duration, distance, intensity, startTime].filter(Boolean);
 
   return (
-    <BaseCard title={title} subtitle={subtitle}>
+    <BaseCard title={title} subtitle={subtitle} variant={variant}>
       <div className={contentStyles.content}>
         <p className={contentStyles.title}>{workoutName}</p>
 

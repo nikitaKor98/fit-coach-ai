@@ -1,4 +1,5 @@
 import type { TrendDirection, TrendPoint } from "../../types";
+import type { BaseCardVariant } from "./BaseCard/BaseCard";
 
 export type InsightCardData = {
   title: string;
@@ -30,6 +31,7 @@ export type UpcomingWorkoutCardData = {
   intensity?: string;
   startTime?: string;
   description?: string;
+  variant?: BaseCardVariant;
 };
 
 export type TrendCardData = {

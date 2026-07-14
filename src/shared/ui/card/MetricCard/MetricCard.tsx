@@ -12,7 +12,7 @@ export function MetricCard({ metric }: MetricCardProps) {
   const displayValue = `${metric.value}${metric.unit ?? ""}`;
 
   return (
-    <BaseCard title={metric.label}>
+    <BaseCard title={metric.label} padding="sm">
       <div className={styles.metric}>
         <span className={styles.value}>{displayValue}</span>
 

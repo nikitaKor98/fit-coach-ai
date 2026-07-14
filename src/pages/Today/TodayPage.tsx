@@ -32,23 +32,31 @@ export function TodayPage({ data }: TodayPageProps) {
         <UpcomingWorkoutCard {...data.upcomingWorkout} />
       </section>
 
-      <section className={styles.section}>
-        <div className={styles.grid}>
-          {data.metrics.map((metric) => (
-            <MetricCard key={metric.id} metric={metric} />
-          ))}
+      <section className={styles.overviewSection}>
+        <div className={styles.sectionHeader}>
+          <div>
+            <h2 className={styles.sectionTitle}>Your condition</h2>
+            <p className={styles.sectionDescription}>
+              Key signals supporting today&apos;s recommendation.
+            </p>
+          </div>
+        </div>
+
+        <div className={styles.overviewGrid}>
+          <div className={styles.metricsGrid}>
+            {data.metrics.map((metric) => (
+              <MetricCard key={metric.id} metric={metric} />
+            ))}
+          </div>
+
+          <div className={styles.trend}>
+            <TrendCard {...data.recoveryTrend} />
+          </div>
         </div>
       </section>
 
-      <section className={styles.section}>
-        <TrendCard {...data.recoveryTrend} />
-      </section>
-
-      <section className={styles.section}>
+      <section className={styles.secondaryGrid}>
         <ActionCard {...data.recommendation} />
-      </section>
-
-      <section className={styles.section}>
         <ActivityCard {...data.recentActivity} />
       </section>
     </div>

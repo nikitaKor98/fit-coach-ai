@@ -40,6 +40,7 @@ export function createTodayViewModel(): TodayPageViewModel {
       intensity: todayMock.upcomingWorkout.intensity,
       startTime: todayMock.upcomingWorkout.startTime,
       description: todayMock.upcomingWorkout.description,
+      variant: "highlighted",
     },
     recoveryTrend: {
       title: "Recovery Trend",

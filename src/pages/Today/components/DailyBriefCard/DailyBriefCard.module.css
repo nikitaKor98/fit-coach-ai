@@ -11,8 +11,10 @@
 }
 
 .scoreBlock {
-  display: flex;
+  display: inline-flex;
   align-items: flex-start;
+  gap: var(--space-1);
+  min-width: 120px;
 }
 
 .score {
@@ -24,10 +26,11 @@
 }
 
 .scoreUnit {
-  margin-top: var(--space-1);
+  margin-top: 0.35em;
   color: var(--color-text-secondary);
   font-size: var(--font-size-lg);
   font-weight: 600;
+  line-height: 1;
 }
 
 .statusBlock {

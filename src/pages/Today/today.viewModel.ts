@@ -28,5 +28,15 @@ export function createTodayViewModel(): TodayPageViewModel {
       activityTitle: todayMock.recentActivity.type,
       description: todayMock.recentActivity.description,
     },
+    upcomingWorkout: {
+      title: "Upcoming Workout",
+      subtitle: "Today",
+      workoutName: todayMock.upcomingWorkout.name,
+      duration: todayMock.upcomingWorkout.duration,
+      distance: todayMock.upcomingWorkout.distance,
+      intensity: todayMock.upcomingWorkout.intensity,
+      startTime: todayMock.upcomingWorkout.startTime,
+      description: todayMock.upcomingWorkout.description,
+    },
   };
 }

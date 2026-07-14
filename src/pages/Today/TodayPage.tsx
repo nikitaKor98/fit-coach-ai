@@ -3,6 +3,7 @@ import {
   ActivityCard,
   InsightCard,
   MetricCard,
+  UpcomingWorkoutCard,
 } from "../../shared/ui/card";
 
 import styles from "./TodayPage.module.css";
@@ -28,6 +29,19 @@ export function TodayPage({ data }: TodayPageProps) {
           subtitle={data.dailyBrief.subtitle}
           insight={data.dailyBrief.insight}
           explanation={data.dailyBrief.explanation}
+        />
+      </section>
+
+      <section className={styles.section}>
+        <UpcomingWorkoutCard
+          title={data.upcomingWorkout.title}
+          subtitle={data.upcomingWorkout.subtitle}
+          workoutName={data.upcomingWorkout.workoutName}
+          duration={data.upcomingWorkout.duration}
+          distance={data.upcomingWorkout.distance}
+          intensity={data.upcomingWorkout.intensity}
+          startTime={data.upcomingWorkout.startTime}
+          description={data.upcomingWorkout.description}
         />
       </section>
 

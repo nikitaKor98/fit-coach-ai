@@ -31,6 +31,18 @@ export type TodayPageViewModel = {
   header: TodayHeaderViewModel;
   dailyBrief: TodayBriefViewModel;
   recommendation: TodayRecommendationViewModel;
+  upcomingWorkout: TodayUpcomingWorkoutViewModel;
   metrics: Metric[];
   recentActivity: TodayActivityViewModel;
+};
+
+export type TodayUpcomingWorkoutViewModel = {
+  title: string;
+  subtitle?: string;
+  workoutName: string;
+  duration?: string;
+  distance?: string;
+  intensity?: string;
+  startTime?: string;
+  description?: string;
 };

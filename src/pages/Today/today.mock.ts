@@ -35,4 +35,13 @@ export const todayMock = {
     type: "Easy run",
     description: "10.2 km · 54 min · 142 bpm",
   },
+  upcomingWorkout: {
+    name: "Threshold run",
+    duration: "55 min",
+    distance: "10 km",
+    intensity: "Moderate",
+    startTime: "18:30",
+    description:
+      "Complete the session at a controlled effort and keep the final interval smooth.",
+  },
 };

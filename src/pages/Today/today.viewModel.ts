@@ -12,8 +12,11 @@ export function createTodayViewModel(): TodayPageViewModel {
     dailyBrief: {
       title: "Daily Brief",
       subtitle: "AI Coach",
-      insight: todayMock.dailyBrief.status,
+      score: 87,
+      status: todayMock.dailyBrief.status,
       explanation: todayMock.dailyBrief.description,
+      recommendation:
+        "Complete the planned threshold workout, but avoid adding extra intensity.",
     },
     recommendation: {
       title: "Today's Recommendation",

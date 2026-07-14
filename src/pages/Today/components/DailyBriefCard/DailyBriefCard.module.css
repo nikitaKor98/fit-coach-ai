@@ -1,0 +1,83 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.scoreBlock {
+  display: flex;
+  align-items: flex-start;
+}
+
+.score {
+  color: var(--color-text-primary);
+  font-size: clamp(3rem, 12vw, 4.5rem);
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+}
+
+.scoreUnit {
+  margin-top: var(--space-1);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+}
+
+.statusBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.status {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  line-height: var(--line-height-tight);
+}
+
+.explanation {
+  max-width: 640px;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-base);
+}
+
+.recommendation {
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-primary);
+}
+
+.recommendationLabel {
+  display: block;
+  margin-bottom: var(--space-1);
+  color: var(--color-accent-primary);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.recommendationText {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  line-height: var(--line-height-base);
+}
+
+@media (min-width: 768px) {
+  .summary {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: var(--space-6);
+  }
+}

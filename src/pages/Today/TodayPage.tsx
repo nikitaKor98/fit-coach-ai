@@ -1,11 +1,11 @@
 import {
   ActionCard,
   ActivityCard,
-  InsightCard,
   MetricCard,
   TrendCard,
   UpcomingWorkoutCard,
 } from "../../shared/ui/card";
+import { DailyBriefCard } from "./components/DailyBriefCard/DailyBriefCard";
 
 import styles from "./TodayPage.module.css";
 
@@ -24,35 +24,12 @@ export function TodayPage({ data }: TodayPageProps) {
         <p className={styles.subtitle}>{data.header.subtitle}</p>
       </header>
 
-      <section className={styles.section}>
-        <InsightCard
-          title={data.dailyBrief.title}
-          subtitle={data.dailyBrief.subtitle}
-          insight={data.dailyBrief.insight}
-          explanation={data.dailyBrief.explanation}
-        />
+      <section className={styles.heroSection}>
+        <DailyBriefCard data={data.dailyBrief} />
       </section>
 
-      <section className={styles.section}>
-        <ActionCard
-          title={data.recommendation.title}
-          subtitle={data.recommendation.subtitle}
-          actionTitle={data.recommendation.actionTitle}
-          description={data.recommendation.description}
-        />
-      </section>
-
-      <section className={styles.section}>
-        <UpcomingWorkoutCard
-          title={data.upcomingWorkout.title}
-          subtitle={data.upcomingWorkout.subtitle}
-          workoutName={data.upcomingWorkout.workoutName}
-          duration={data.upcomingWorkout.duration}
-          distance={data.upcomingWorkout.distance}
-          intensity={data.upcomingWorkout.intensity}
-          startTime={data.upcomingWorkout.startTime}
-          description={data.upcomingWorkout.description}
-        />
+      <section className={styles.primarySection}>
+        <UpcomingWorkoutCard {...data.upcomingWorkout} />
       </section>
 
       <section className={styles.section}>
@@ -64,24 +41,15 @@ export function TodayPage({ data }: TodayPageProps) {
       </section>
 
       <section className={styles.section}>
-        <TrendCard
-          title={data.recoveryTrend.title}
-          subtitle={data.recoveryTrend.subtitle}
-          summary={data.recoveryTrend.summary}
-          description={data.recoveryTrend.description}
-          direction={data.recoveryTrend.direction}
-          change={data.recoveryTrend.change}
-          points={data.recoveryTrend.points}
-        />
+        <TrendCard {...data.recoveryTrend} />
       </section>
 
       <section className={styles.section}>
-        <ActivityCard
-          title={data.recentActivity.title}
-          subtitle={data.recentActivity.subtitle}
-          activityTitle={data.recentActivity.activityTitle}
-          description={data.recentActivity.description}
-        />
+        <ActionCard {...data.recommendation} />
+      </section>
+
+      <section className={styles.section}>
+        <ActivityCard {...data.recentActivity} />
       </section>
     </div>
   );

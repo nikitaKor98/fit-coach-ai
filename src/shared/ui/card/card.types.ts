@@ -48,8 +48,10 @@ export type GoalProgressCardData = {
   title: string;
   subtitle?: string;
   goalName: string;
-  currentValue: string;
-  targetValue: string;
   progress: number;
+  currentValue?: string;
+  targetValue?: string;
+  deadline?: string;
   description?: string;
+  variant?: BaseCardVariant;
 };

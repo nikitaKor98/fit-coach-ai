@@ -18,15 +18,22 @@ export function GoalProgressCard({
   currentValue,
   targetValue,
   progress,
+  deadline,
   description,
+  variant = "default",
 }: GoalProgressCardProps) {
   const normalizedProgress = clampProgress(progress);
+  const hasValues = currentValue || targetValue;
 
   return (
-    <BaseCard title={title} subtitle={subtitle}>
+    <BaseCard title={title} subtitle={subtitle} variant={variant}>
       <div className={contentStyles.content}>
         <div className={styles.header}>
-          <p className={contentStyles.title}>{goalName}</p>
+          <div className={styles.heading}>
+            <p className={contentStyles.title}>{goalName}</p>
+
+            {deadline && <span className={styles.deadline}>{deadline}</span>}
+          </div>
 
           <span className={styles.progressLabel}>{normalizedProgress}%</span>
         </div>
@@ -45,10 +52,12 @@ export function GoalProgressCard({
           />
         </div>
 
-        <div className={styles.values}>
-          <span>{currentValue}</span>
-          <span>{targetValue}</span>
-        </div>
+        {hasValues && (
+          <div className={styles.values}>
+            <span>{currentValue ?? "Current"}</span>
+            <span>{targetValue ?? "Target"}</span>
+          </div>
+        )}
 
         {description && (
           <p className={contentStyles.description}>{description}</p>

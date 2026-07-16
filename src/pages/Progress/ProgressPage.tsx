@@ -1,6 +1,6 @@
 import {
   ActivityCard,
-  BaseCard,
+  GoalProgressCard,
   InsightCard,
   MetricCard,
   TrendCard,
@@ -38,38 +38,7 @@ export function ProgressPage({ data }: ProgressPageProps) {
       </section>
 
       <section className={styles.section}>
-        <BaseCard title={data.goal.title} subtitle={data.goal.subtitle}>
-          <div className={styles.goal}>
-            <div className={styles.goalHeader}>
-              <p className={styles.goalName}>{data.goal.goalName}</p>
-
-              <span className={styles.goalProgress}>{data.goal.progress}%</span>
-            </div>
-
-            <div
-              className={styles.progressTrack}
-              role="progressbar"
-              aria-label={data.goal.goalName}
-              aria-valuemin={0}
-              aria-valuemax={100}
-              aria-valuenow={data.goal.progress}
-            >
-              <span
-                className={styles.progressValue}
-                style={{ width: `${data.goal.progress}%` }}
-              />
-            </div>
-
-            <div className={styles.goalValues}>
-              <span>{data.goal.currentValue}</span>
-              <span>{data.goal.targetValue}</span>
-            </div>
-
-            {data.goal.description && (
-              <p className={styles.goalDescription}>{data.goal.description}</p>
-            )}
-          </div>
-        </BaseCard>
+        <GoalProgressCard {...data.goal} />
       </section>
 
       <section className={styles.section}>

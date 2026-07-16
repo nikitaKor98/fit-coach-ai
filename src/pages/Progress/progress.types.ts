@@ -3,6 +3,7 @@ import type {
   ActivityCardData,
   InsightCardData,
   TrendCardData,
+  GoalProgressCardData,
 } from "../../shared/ui/card";
 
 export type ProgressHeaderViewModel = {
@@ -11,21 +12,11 @@ export type ProgressHeaderViewModel = {
   subtitle: string;
 };
 
-export type ProgressGoalViewModel = {
-  title: string;
-  subtitle?: string;
-  goalName: string;
-  currentValue: string;
-  targetValue: string;
-  progress: number;
-  description?: string;
-};
-
 export type ProgressPageViewModel = {
   header: ProgressHeaderViewModel;
   weeklySummary: InsightCardData;
   trainingLoadTrend: TrendCardData;
   metrics: Metric[];
-  goal: ProgressGoalViewModel;
+  goal: GoalProgressCardData;
   recentAchievement: ActivityCardData;
 };

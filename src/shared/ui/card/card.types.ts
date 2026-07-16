@@ -43,3 +43,13 @@ export type TrendCardData = {
   change?: string;
   points: TrendPoint[];
 };
+
+export type GoalProgressCardData = {
+  title: string;
+  subtitle?: string;
+  goalName: string;
+  currentValue: string;
+  targetValue: string;
+  progress: number;
+  description?: string;
+};

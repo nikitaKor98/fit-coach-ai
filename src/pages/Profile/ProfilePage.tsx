@@ -1,6 +1,9 @@
 import { BaseCard } from "../../shared/ui/card";
 
-import type { AppTheme } from "../../app/SettingsProvider/settings.types";
+import type {
+  AppTheme,
+  AppLanguage,
+} from "../../app/SettingsProvider/settings.types";
 
 import styles from "./ProfilePage.module.css";
 
@@ -40,15 +43,22 @@ type SettingsListProps = {
 };
 
 function SettingsList({ items, actions }: SettingsListProps) {
+  const handleSettingChange = (item: ProfileSettingsItem, value: string) => {
+    switch (item.id) {
+      case "theme":
+        actions.onThemeChange(value as AppTheme);
+        break;
+
+      case "language":
+        actions.onLanguageChange(value as AppLanguage);
+        break;
+    }
+  };
+
   return (
     <div className={styles.settingsList}>
       {items.map((item) => (
-        <button
-          key={item.id}
-          type="button"
-          className={styles.settingsItem}
-          disabled={item.isDisabled}
-        >
+        <div key={item.id} className={styles.settingsItem}>
           <span className={styles.settingsContent}>
             <span className={styles.settingsLabel}>{item.label}</span>
 
@@ -59,12 +69,13 @@ function SettingsList({ items, actions }: SettingsListProps) {
             )}
           </span>
 
-          {item.id === "theme" && item.options ? (
+          {item.options ? (
             <select
               className={styles.settingsSelect}
               value={item.value}
+              disabled={item.isDisabled}
               onChange={(event) => {
-                actions.onThemeChange(event.target.value as AppTheme);
+                handleSettingChange(item, event.target.value);
               }}
               aria-label={item.label}
             >
@@ -77,12 +88,13 @@ function SettingsList({ items, actions }: SettingsListProps) {
           ) : (
             <span className={styles.settingsValue}>
               {item.value}
+
               {item.isDisabled && (
                 <span className={styles.comingSoon}>Soon</span>
               )}
             </span>
           )}
-        </button>
+        </div>
       ))}
     </div>
   );

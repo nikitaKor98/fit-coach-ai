@@ -41,6 +41,6 @@ export function useAppPages(): AppPages {
         />
       ),
     }),
-    [settings, setTheme],
+    [settings, setTheme, setLanguage, setUnits],
   );
 }

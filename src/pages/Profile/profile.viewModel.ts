@@ -91,7 +91,16 @@ export function createProfileViewModel(
         label: "Language",
         description: "Application interface language.",
         value: settings.language,
-        isDisabled: true,
+        options: [
+          {
+            value: "en",
+            label: "English",
+          },
+          {
+            value: "ru",
+            label: "Русский",
+          },
+        ],
       },
       {
         id: "theme",

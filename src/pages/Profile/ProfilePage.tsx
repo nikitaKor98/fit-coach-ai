@@ -1,16 +1,20 @@
 import { BaseCard } from "../../shared/ui/card";
 
+import type { AppTheme } from "../../app/SettingsProvider/settings.types";
+
 import styles from "./ProfilePage.module.css";
 
 import type {
   ConnectedDeviceViewModel,
   ProfileDetailItem,
   ProfilePageViewModel,
+  ProfileSettingsActions,
   ProfileSettingsItem,
 } from "./profile.types";
 
 type ProfilePageProps = {
   data: ProfilePageViewModel;
+  actions: ProfileSettingsActions;
 };
 
 type DetailListProps = {
@@ -32,9 +36,10 @@ function DetailList({ items }: DetailListProps) {
 
 type SettingsListProps = {
   items: ProfileSettingsItem[];
+  actions: ProfileSettingsActions;
 };
 
-function SettingsList({ items }: SettingsListProps) {
+function SettingsList({ items, actions }: SettingsListProps) {
   return (
     <div className={styles.settingsList}>
       {items.map((item) => (
@@ -54,10 +59,29 @@ function SettingsList({ items }: SettingsListProps) {
             )}
           </span>
 
-          <span className={styles.settingsValue}>
-            {item.value}
-            {item.isDisabled && <span className={styles.comingSoon}>Soon</span>}
-          </span>
+          {item.id === "theme" && item.options ? (
+            <select
+              className={styles.settingsSelect}
+              value={item.value}
+              onChange={(event) => {
+                actions.onThemeChange(event.target.value as AppTheme);
+              }}
+              aria-label={item.label}
+            >
+              {item.options.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          ) : (
+            <span className={styles.settingsValue}>
+              {item.value}
+              {item.isDisabled && (
+                <span className={styles.comingSoon}>Soon</span>
+              )}
+            </span>
+          )}
         </button>
       ))}
     </div>
@@ -98,7 +122,7 @@ function DeviceList({ devices }: DeviceListProps) {
   );
 }
 
-export function ProfilePage({ data }: ProfilePageProps) {
+export function ProfilePage({ data, actions }: ProfilePageProps) {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
@@ -153,7 +177,7 @@ export function ProfilePage({ data }: ProfilePageProps) {
 
       <section className={styles.section}>
         <BaseCard title="Application settings" subtitle="Preferences">
-          <SettingsList items={data.settings} />
+          <SettingsList items={data.settings} actions={actions} />
         </BaseCard>
       </section>
     </div>

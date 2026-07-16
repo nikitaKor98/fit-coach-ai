@@ -1,12 +1,16 @@
 import { profileMock } from "./profile.mock";
+
+import type { AppSettings } from "../../app/SettingsProvider/settings.types";
 import type { ProfilePageViewModel } from "./profile.types";
 
 function createInitials(firstName: string, lastName: string) {
   return `${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase();
 }
 
-export function createProfileViewModel(): ProfilePageViewModel {
-  const { user, personalDetails, trainingPreferences, settings } = profileMock;
+export function createProfileViewModel(
+  settings: AppSettings,
+): ProfilePageViewModel {
+  const { user, personalDetails, trainingPreferences } = profileMock;
 
   return {
     header: {
@@ -94,7 +98,11 @@ export function createProfileViewModel(): ProfilePageViewModel {
         label: "Appearance",
         description: "Light, dark, or system theme.",
         value: settings.theme,
-        isDisabled: true,
+        options: [
+          { value: "system", label: "System" },
+          { value: "light", label: "Light" },
+          { value: "dark", label: "Dark" },
+        ],
       },
     ],
 

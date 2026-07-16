@@ -23,12 +23,6 @@ export const profileMock = {
     preferredTrainingTime: "Evening",
   },
 
-  settings: {
-    units: "Metric",
-    language: "English",
-    theme: "System",
-  },
-
   connectedDevices: [
     {
       id: "garmin-watch",

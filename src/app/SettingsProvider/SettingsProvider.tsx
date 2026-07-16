@@ -1,16 +1,10 @@
-import {
-  useEffect,
-  useMemo,
-  useState,
-  type ReactNode,
-} from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 
-import {
-  DEFAULT_SETTINGS,
-  SETTINGS_STORAGE_KEY,
-} from "./settings.constants";
+import { DEFAULT_SETTINGS, SETTINGS_STORAGE_KEY } from "./settings.constants";
 
 import { SettingsContext } from "./settings.context";
+
+import { useApplyTheme } from "./useApplyTheme";
 
 import type {
   AppLanguage,
@@ -40,16 +34,13 @@ function loadSettings(): AppSettings {
   }
 }
 
-export function SettingsProvider({
-  children,
-}: SettingsProviderProps) {
+export function SettingsProvider({ children }: SettingsProviderProps) {
   const [settings, setSettings] = useState<AppSettings>(loadSettings);
 
+  useApplyTheme(settings.theme);
+
   useEffect(() => {
-    localStorage.setItem(
-      SETTINGS_STORAGE_KEY,
-      JSON.stringify(settings),
-    );
+    localStorage.setItem(SETTINGS_STORAGE_KEY, JSON.stringify(settings));
   }, [settings]);
 
   const value = useMemo(

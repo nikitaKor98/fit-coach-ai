@@ -17,10 +17,11 @@ import { createProfileViewModel } from "../pages/Profile/profile.viewModel";
 
 import type { NavigationItemId } from "../shared/ui/navigation/navigation.types";
 
+import { useSettings } from "./SettingsProvider/useSettings";
+
 const todayViewModel = createTodayViewModel();
 const progressViewModel = createProgressViewModel();
 const goalsViewModel = createGoalsViewModel();
-const profileViewModel = createProfileViewModel();
 
 function App() {
   const [activePage, setActivePage] = useState<NavigationItemId>("today");
@@ -29,6 +30,8 @@ function App() {
     ...item,
     isActive: item.id === activePage,
   }));
+
+  const { settings, setTheme, setLanguage, setUnits } = useSettings();
 
   const renderPage = () => {
     switch (activePage) {
@@ -41,7 +44,16 @@ function App() {
       case "goals":
         return <GoalsPage data={goalsViewModel} />;
       case "profile":
-        return <ProfilePage data={profileViewModel} />;
+        return (
+          <ProfilePage
+            data={createProfileViewModel(settings)}
+            actions={{
+              onThemeChange: setTheme,
+              onLanguageChange: setLanguage,
+              onUnitsChange: setUnits,
+            }}
+          />
+        );
       default:
         return <TodayPage data={todayViewModel} />;
     }

@@ -1,3 +1,9 @@
+import type {
+  AppLanguage,
+  AppTheme,
+  MeasurementSystem,
+} from "../../app/SettingsProvider/settings.types";
+
 export type ProfileHeaderViewModel = {
   eyebrow: string;
   title: string;
@@ -18,11 +24,17 @@ export type ProfileDetailItem = {
   value: string;
 };
 
+export type ProfileSettingsOption = {
+  value: string;
+  label: string;
+};
+
 export type ProfileSettingsItem = {
-  id: string;
+  id: "units" | "language" | "theme";
   label: string;
   description?: string;
   value: string;
+  options?: ProfileSettingsOption[];
   isDisabled?: boolean;
 };
 
@@ -41,4 +53,10 @@ export type ProfilePageViewModel = {
   trainingPreferences: ProfileDetailItem[];
   settings: ProfileSettingsItem[];
   connectedDevices: ConnectedDeviceViewModel[];
+};
+
+export type ProfileSettingsActions = {
+  onThemeChange: (theme: AppTheme) => void;
+  onLanguageChange: (language: AppLanguage) => void;
+  onUnitsChange: (units: MeasurementSystem) => void;
 };

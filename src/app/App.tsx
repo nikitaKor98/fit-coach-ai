@@ -8,6 +8,7 @@ import { navigationMock } from "../shared/ui/navigation/navigation.mock";
 import type { NavigationItemId } from "../shared/ui/navigation/navigation.types";
 
 import { useAppPages } from "./composition/useAppPages";
+import { useSettings } from "./SettingsProvider/useSettings";
 
 function App() {
   const [activePage, setActivePage] = useState<NavigationItemId>("today");
@@ -19,12 +20,21 @@ function App() {
     isActive: item.id === activePage,
   }));
 
+  const { setLanguage } = useSettings();
+
   return (
     <AppShell
       navigation={
         <BottomNavigation items={navigationItems} onSelect={setActivePage} />
       }
     >
+      <button type="button" onClick={() => setLanguage("en")}>
+        EN
+      </button>
+
+      <button type="button" onClick={() => setLanguage("ru")}>
+        RU
+      </button>
       {pages[activePage]}
     </AppShell>
   );

@@ -7,7 +7,6 @@ export type NavigationItemId =
 
 export type NavigationItem = {
   id: NavigationItemId;
-  label: string;
   isActive?: boolean;
   isPrimary?: boolean;
 };

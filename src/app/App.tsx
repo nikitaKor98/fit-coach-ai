@@ -13,12 +13,14 @@ import { navigationMock } from "../shared/ui/navigation/navigation.mock";
 import { createTodayViewModel } from "../pages/Today/today.viewModel";
 import { createProgressViewModel } from "../pages/Progress/progress.viewModel";
 import { createGoalsViewModel } from "../pages/Goals/goals.viewModele";
+import { createProfileViewModel } from "../pages/Profile/profile.viewModel";
 
 import type { NavigationItemId } from "../shared/ui/navigation/navigation.types";
 
 const todayViewModel = createTodayViewModel();
 const progressViewModel = createProgressViewModel();
 const goalsViewModel = createGoalsViewModel();
+const profileViewModel = createProfileViewModel();
 
 function App() {
   const [activePage, setActivePage] = useState<NavigationItemId>("today");
@@ -39,7 +41,7 @@ function App() {
       case "goals":
         return <GoalsPage data={goalsViewModel} />;
       case "profile":
-        return <ProfilePage />;
+        return <ProfilePage data={profileViewModel} />;
       default:
         return <TodayPage data={todayViewModel} />;
     }

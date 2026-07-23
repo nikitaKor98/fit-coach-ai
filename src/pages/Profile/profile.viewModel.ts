@@ -1,7 +1,13 @@
+import type { AppSettings } from "../../app/SettingsProvider/settings.types";
+
 import { profileMock } from "./profile.mock";
 
-import type { AppSettings } from "../../app/SettingsProvider/settings.types";
-import type { ProfilePageViewModel } from "./profile.types";
+import type {
+  PersonalDetailViewModel,
+  ProfilePageViewModel,
+  ProfileSettingsItem,
+  TrainingPreferenceViewModel,
+} from "./profile.types";
 
 function createInitials(firstName: string, lastName: string) {
   return `${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase();
@@ -12,14 +18,67 @@ export function createProfileViewModel(
 ): ProfilePageViewModel {
   const { user, personalDetails, trainingPreferences } = profileMock;
 
-  return {
-    header: {
-      eyebrow: "Profile",
-      title: "Your personal context",
-      subtitle:
-        "Manage the information that helps FitCoach AI understand your goals, preferences, and training environment.",
+  const personalDetailItems: PersonalDetailViewModel[] = [
+    {
+      id: "age",
+      value: `${personalDetails.age}`,
     },
+    {
+      id: "height",
+      value: `${personalDetails.heightCentimeters} cm`,
+    },
+    {
+      id: "weight",
+      value: `${personalDetails.weightKilograms} kg`,
+    },
+    {
+      id: "location",
+      value: personalDetails.location,
+    },
+  ];
 
+  const trainingPreferenceItems: TrainingPreferenceViewModel[] = [
+    {
+      id: "primary-sport",
+      value: trainingPreferences.primarySport,
+    },
+    {
+      id: "weekly-target",
+      value: `${trainingPreferences.weeklyTargetKilometers} km`,
+    },
+    {
+      id: "long-run-day",
+      value: trainingPreferences.longRunDay,
+    },
+    {
+      id: "rest-day",
+      value: trainingPreferences.restDay,
+    },
+    {
+      id: "training-time",
+      value: trainingPreferences.preferredTrainingTime,
+    },
+  ];
+
+  const settingsItems: ProfileSettingsItem[] = [
+    {
+      id: "units",
+      value: settings.units,
+      isDisabled: true,
+    },
+    {
+      id: "language",
+      value: settings.language,
+      options: [{ value: "en" }, { value: "ru" }],
+    },
+    {
+      id: "theme",
+      value: settings.theme,
+      options: [{ value: "system" }, { value: "light" }, { value: "dark" }],
+    },
+  ];
+
+  return {
     summary: {
       name: `${user.firstName} ${user.lastName}`,
       initials: createInitials(user.firstName, user.lastName),
@@ -28,92 +87,11 @@ export function createProfileViewModel(
       primaryGoal: user.primaryGoal,
     },
 
-    personalDetails: [
-      {
-        id: "age",
-        label: "Age",
-        value: `${personalDetails.age}`,
-      },
-      {
-        id: "height",
-        label: "Height",
-        value: `${personalDetails.heightCentimeters} cm`,
-      },
-      {
-        id: "weight",
-        label: "Weight",
-        value: `${personalDetails.weightKilograms} kg`,
-      },
-      {
-        id: "location",
-        label: "Location",
-        value: personalDetails.location,
-      },
-    ],
+    personalDetails: personalDetailItems,
 
-    trainingPreferences: [
-      {
-        id: "primary-sport",
-        label: "Primary sport",
-        value: trainingPreferences.primarySport,
-      },
-      {
-        id: "weekly-target",
-        label: "Weekly target",
-        value: `${trainingPreferences.weeklyTargetKilometers} km`,
-      },
-      {
-        id: "long-run-day",
-        label: "Long run day",
-        value: trainingPreferences.longRunDay,
-      },
-      {
-        id: "rest-day",
-        label: "Rest day",
-        value: trainingPreferences.restDay,
-      },
-      {
-        id: "training-time",
-        label: "Preferred training time",
-        value: trainingPreferences.preferredTrainingTime,
-      },
-    ],
+    trainingPreferences: trainingPreferenceItems,
 
-    settings: [
-      {
-        id: "units",
-        label: "Units",
-        description: "Distance, weight, and temperature formats.",
-        value: settings.units,
-      },
-      {
-        id: "language",
-        label: "Language",
-        description: "Application interface language.",
-        value: settings.language,
-        options: [
-          {
-            value: "en",
-            label: "English",
-          },
-          {
-            value: "ru",
-            label: "Русский",
-          },
-        ],
-      },
-      {
-        id: "theme",
-        label: "Appearance",
-        description: "Light, dark, or system theme.",
-        value: settings.theme,
-        options: [
-          { value: "system", label: "System" },
-          { value: "light", label: "Light" },
-          { value: "dark", label: "Dark" },
-        ],
-      },
-    ],
+    settings: settingsItems,
 
     connectedDevices: profileMock.connectedDevices.map((device) => ({
       id: device.id,

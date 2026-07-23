@@ -157,4 +157,79 @@ export const ru: TranslationDictionary = {
       subtitle: "Следующий приоритет",
     },
   },
+  ask: {
+    preview: {
+      title: "Вопрос тренеру",
+      subtitle: "Предварительная версия",
+      description: "Основа страницы вопросов будет добавлена здесь.",
+    },
+  },
+  profile: {
+    header: {
+      eyebrow: "Профиль",
+      title: "Ваши персональные данные",
+      subtitle:
+        "Управляйте информацией, которая помогает FitCoach AI учитывать ваши цели, предпочтения и условия тренировок.",
+    },
+
+    cards: {
+      personalInformation: "Персональная информация",
+      trainingPreferences: "Предпочтения в тренировках",
+      connectedDevices: "Подключённые устройства",
+      dataSources: "Источники данных",
+      applicationSettings: "Настройки приложения",
+      preferences: "Предпочтения",
+    },
+
+    personal: {
+      age: "Возраст",
+      height: "Рост",
+      weight: "Вес",
+      location: "Местоположение",
+    },
+
+    training: {
+      primarySport: "Основной вид спорта",
+      weeklyTarget: "Недельная цель",
+      longRunDay: "День длительной тренировки",
+      restDay: "День отдыха",
+      preferredTrainingTime: "Предпочтительное время тренировки",
+    },
+
+    devices: {
+      lastSync: "Последняя синхронизация",
+
+      status: {
+        connected: "Подключено",
+        disconnected: "Не подключено",
+      },
+    },
+
+    settings: {
+      units: {
+        label: "Единицы измерения",
+        description: "Форматы расстояния, веса и температуры.",
+      },
+
+      language: {
+        label: "Язык",
+        description: "Язык интерфейса приложения.",
+      },
+
+      theme: {
+        label: "Оформление",
+        description: "Светлая, тёмная или системная тема.",
+      },
+
+      options: {
+        english: "English",
+        russian: "Русский",
+        system: "Системная",
+        light: "Светлая",
+        dark: "Тёмная",
+      },
+
+      soon: "Скоро",
+    },
+  },
 };

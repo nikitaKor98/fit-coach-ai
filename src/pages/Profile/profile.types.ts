@@ -4,12 +4,6 @@ import type {
   MeasurementSystem,
 } from "../../app/SettingsProvider/settings.types";
 
-export type ProfileHeaderViewModel = {
-  eyebrow: string;
-  title: string;
-  subtitle: string;
-};
-
 export type ProfileSummaryViewModel = {
   name: string;
   initials: string;
@@ -18,39 +12,68 @@ export type ProfileSummaryViewModel = {
   primaryGoal: string;
 };
 
-export type ProfileDetailItem = {
-  id: string;
-  label: string;
+export type PersonalDetailId = "age" | "height" | "weight" | "location";
+
+export type PersonalDetailViewModel = {
+  id: PersonalDetailId;
   value: string;
 };
 
-export type ProfileSettingsOption = {
+export type TrainingPreferenceId =
+  | "primary-sport"
+  | "weekly-target"
+  | "long-run-day"
+  | "rest-day"
+  | "training-time";
+
+export type TrainingPreferenceViewModel = {
+  id: TrainingPreferenceId;
   value: string;
-  label: string;
 };
 
-export type ProfileSettingsItem = {
-  id: "units" | "language" | "theme";
-  label: string;
-  description?: string;
-  value: string;
-  options?: ProfileSettingsOption[];
+export type ProfileSettingsOption<TValue extends string> = {
+  value: TValue;
+};
+
+export type UnitsSettingsItem = {
+  id: "units";
+  value: MeasurementSystem;
   isDisabled?: boolean;
 };
+
+export type LanguageSettingsItem = {
+  id: "language";
+  value: AppLanguage;
+  options: ProfileSettingsOption<AppLanguage>[];
+  isDisabled?: boolean;
+};
+
+export type ThemeSettingsItem = {
+  id: "theme";
+  value: AppTheme;
+  options: ProfileSettingsOption<AppTheme>[];
+  isDisabled?: boolean;
+};
+
+export type ProfileSettingsItem =
+  | UnitsSettingsItem
+  | LanguageSettingsItem
+  | ThemeSettingsItem;
+
+export type ConnectedDeviceStatus = "connected" | "disconnected";
 
 export type ConnectedDeviceViewModel = {
   id: string;
   name: string;
   provider: string;
-  status: "connected" | "disconnected";
+  status: ConnectedDeviceStatus;
   lastSync?: string;
 };
 
 export type ProfilePageViewModel = {
-  header: ProfileHeaderViewModel;
   summary: ProfileSummaryViewModel;
-  personalDetails: ProfileDetailItem[];
-  trainingPreferences: ProfileDetailItem[];
+  personalDetails: PersonalDetailViewModel[];
+  trainingPreferences: TrainingPreferenceViewModel[];
   settings: ProfileSettingsItem[];
   connectedDevices: ConnectedDeviceViewModel[];
 };

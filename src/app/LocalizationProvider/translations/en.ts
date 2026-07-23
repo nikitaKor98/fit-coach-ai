@@ -155,4 +155,79 @@ export const en: TranslationDictionary = {
       subtitle: "Next priority",
     },
   },
+  ask: {
+    preview: {
+      title: "Ask",
+      subtitle: "Preview",
+      description: "Ask page foundation will be added here.",
+    },
+  },
+  profile: {
+    header: {
+      eyebrow: "Profile",
+      title: "Your personal context",
+      subtitle:
+        "Manage the information that helps FitCoach AI understand your goals, preferences, and training environment.",
+    },
+
+    cards: {
+      personalInformation: "Personal information",
+      trainingPreferences: "Training preferences",
+      connectedDevices: "Connected devices",
+      dataSources: "Data sources",
+      applicationSettings: "Application settings",
+      preferences: "Preferences",
+    },
+
+    personal: {
+      age: "Age",
+      height: "Height",
+      weight: "Weight",
+      location: "Location",
+    },
+
+    training: {
+      primarySport: "Primary sport",
+      weeklyTarget: "Weekly target",
+      longRunDay: "Long run day",
+      restDay: "Rest day",
+      preferredTrainingTime: "Preferred training time",
+    },
+
+    devices: {
+      lastSync: "Last sync",
+
+      status: {
+        connected: "Connected",
+        disconnected: "Disconnected",
+      },
+    },
+
+    settings: {
+      units: {
+        label: "Units",
+        description: "Distance, weight, and temperature formats.",
+      },
+
+      language: {
+        label: "Language",
+        description: "Application interface language.",
+      },
+
+      theme: {
+        label: "Appearance",
+        description: "Light, dark, or system theme.",
+      },
+
+      options: {
+        english: "English",
+        russian: "Русский",
+        system: "System",
+        light: "Light",
+        dark: "Dark",
+      },
+
+      soon: "Soon",
+    },
+  },
 };

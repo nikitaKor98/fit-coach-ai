@@ -126,4 +126,35 @@ export const ru: TranslationDictionary = {
       subtitle: "На этой неделе",
     },
   },
+  goals: {
+    header: {
+      eyebrow: "Цели",
+      title: "Сосредоточьтесь на главном",
+      subtitle:
+        "Отслеживайте основную цель и промежуточные задачи, которые помогают её достичь.",
+    },
+
+    primaryGoal: {
+      title: "Основная цель",
+      subtitle: "Цель на забег",
+    },
+
+    supportingGoals: {
+      sectionTitle: "Промежуточные цели",
+      sectionDescription:
+        "Небольшие этапы, которые приближают вас к основной цели.",
+      cardTitle: "Промежуточная цель",
+      cardSubtitle: "Текущий цикл",
+    },
+
+    goal: {
+      currentLabel: "Текущее значение",
+      targetLabel: "Цель",
+    },
+
+    recommendation: {
+      title: "Рекомендация тренера",
+      subtitle: "Следующий приоритет",
+    },
+  },
 };

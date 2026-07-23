@@ -1,4 +1,3 @@
-import type { TrendPoint } from "../../shared/types";
 import type {
   ProgressMetricViewModel,
   ProgressTrendPointViewModel,

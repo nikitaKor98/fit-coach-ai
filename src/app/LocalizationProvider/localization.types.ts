@@ -60,7 +60,20 @@ export type TranslationKey =
   | "progress.trainingLoad.points.week4"
   | "progress.trainingLoad.points.week5"
   | "progress.trainingLoad.points.week6"
-  | "progress.trainingLoad.points.now";
+  | "progress.trainingLoad.points.now"
+  | "goals.header.eyebrow"
+  | "goals.header.title"
+  | "goals.header.subtitle"
+  | "goals.primaryGoal.title"
+  | "goals.primaryGoal.subtitle"
+  | "goals.supportingGoals.sectionTitle"
+  | "goals.supportingGoals.sectionDescription"
+  | "goals.supportingGoals.cardTitle"
+  | "goals.supportingGoals.cardSubtitle"
+  | "goals.goal.currentLabel"
+  | "goals.goal.targetLabel"
+  | "goals.recommendation.title"
+  | "goals.recommendation.subtitle";
 
 export type LocalizationContextValue = {
   language: AppLanguage;

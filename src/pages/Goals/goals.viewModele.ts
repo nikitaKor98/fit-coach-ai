@@ -1,8 +1,9 @@
-import type { GoalProgressCardData } from "../../shared/ui/card";
+import type {
+  GoalsPageViewModel,
+  SupportingGoalViewModel,
+} from "./goals.types";
 
 import { goalsMock } from "./goals.mock";
-
-import type { GoalsPageViewModel } from "./goals.types";
 
 function calculateProgress(current: number, target: number) {
   if (target <= 0) {
@@ -13,29 +14,18 @@ function calculateProgress(current: number, target: number) {
 }
 
 export function createGoalsViewModel(): GoalsPageViewModel {
-  const supportingGoals: GoalProgressCardData[] = goalsMock.supportingGoals.map(
-    (goal) => ({
-      title: "Supporting Goal",
-      subtitle: "Current cycle",
+  const supportingGoals: SupportingGoalViewModel[] =
+    goalsMock.supportingGoals.map((goal) => ({
+      id: goal.id,
       goalName: goal.name,
       currentValue: `${goal.current} ${goal.unit}`,
       targetValue: `${goal.target} ${goal.unit}`,
       progress: calculateProgress(goal.current, goal.target),
       description: goal.description,
-    }),
-  );
+    }));
 
   return {
-    header: {
-      eyebrow: "Goals",
-      title: "Stay focused on what matters",
-      subtitle:
-        "Track your primary objective and the smaller goals that support it.",
-    },
-
     primaryGoal: {
-      title: "Primary Goal",
-      subtitle: "Race target",
       goalName: `${goalsMock.primaryGoal.name} · ${goalsMock.primaryGoal.targetTime}`,
       progress: goalsMock.primaryGoal.progress,
       deadline: goalsMock.primaryGoal.targetDate,

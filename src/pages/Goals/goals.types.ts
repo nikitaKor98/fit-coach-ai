@@ -3,15 +3,30 @@ import type {
   GoalProgressCardData,
 } from "../../shared/ui/card";
 
-export type GoalsHeaderViewModel = {
-  eyebrow: string;
-  title: string;
-  subtitle: string;
+export type SupportingGoalId =
+  | "weekly-volume"
+  | "long-run"
+  | "threshold-consistency";
+
+export type PrimaryGoalViewModel = Omit<
+  GoalProgressCardData,
+  "title" | "subtitle" | "currentLabel" | "targetLabel"
+>;
+
+export type SupportingGoalViewModel = Omit<
+  GoalProgressCardData,
+  "title" | "subtitle" | "currentLabel" | "targetLabel"
+> & {
+  id: SupportingGoalId;
 };
 
+export type GoalsRecommendationViewModel = Omit<
+  ActionCardData,
+  "title" | "subtitle"
+>;
+
 export type GoalsPageViewModel = {
-  header: GoalsHeaderViewModel;
-  primaryGoal: GoalProgressCardData;
-  supportingGoals: GoalProgressCardData[];
-  recommendation: ActionCardData;
+  primaryGoal: PrimaryGoalViewModel;
+  supportingGoals: SupportingGoalViewModel[];
+  recommendation: GoalsRecommendationViewModel;
 };

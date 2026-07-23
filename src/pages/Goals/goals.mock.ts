@@ -1,3 +1,14 @@
+import type { SupportingGoalId } from "./goals.types";
+
+type SupportingGoalMock = {
+  id: SupportingGoalId;
+  name: string;
+  current: number;
+  target: number;
+  unit: string;
+  description: string;
+};
+
 export const goalsMock = {
   primaryGoal: {
     name: "Istanbul Marathon",
@@ -35,11 +46,9 @@ export const goalsMock = {
       description:
         "One more controlled threshold session will complete this cycle.",
     },
-  ],
+  ] satisfies SupportingGoalMock[],
 
   recommendation: {
-    title: "Coach Recommendation",
-    subtitle: "Next priority",
     actionTitle: "Build marathon-pace efficiency",
     description:
       "Keep weekly volume stable and introduce controlled marathon-pace segments inside selected long runs.",

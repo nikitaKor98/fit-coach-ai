@@ -124,4 +124,35 @@ export const en: TranslationDictionary = {
       subtitle: "This week",
     },
   },
+  goals: {
+    header: {
+      eyebrow: "Goals",
+      title: "Stay focused on what matters",
+      subtitle:
+        "Track your primary objective and the smaller goals that support it.",
+    },
+
+    primaryGoal: {
+      title: "Primary Goal",
+      subtitle: "Race target",
+    },
+
+    supportingGoals: {
+      sectionTitle: "Supporting goals",
+      sectionDescription:
+        "Smaller milestones that move you toward the primary goal.",
+      cardTitle: "Supporting Goal",
+      cardSubtitle: "Current cycle",
+    },
+
+    goal: {
+      currentLabel: "Current",
+      targetLabel: "Target",
+    },
+
+    recommendation: {
+      title: "Coach Recommendation",
+      subtitle: "Next priority",
+    },
+  },
 };

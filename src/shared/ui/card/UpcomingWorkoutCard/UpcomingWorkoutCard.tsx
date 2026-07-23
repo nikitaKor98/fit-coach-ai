@@ -16,9 +16,12 @@ export function UpcomingWorkoutCard({
   intensity,
   startTime,
   description,
+  detailsAriaLabel = "Workout details",
   variant = "default",
 }: UpcomingWorkoutCardProps) {
-  const details = [duration, distance, intensity, startTime].filter(Boolean);
+  const details = [duration, distance, intensity, startTime].filter(
+    (detail): detail is string => Boolean(detail),
+  );
 
   return (
     <BaseCard title={title} subtitle={subtitle} variant={variant}>
@@ -26,7 +29,7 @@ export function UpcomingWorkoutCard({
         <p className={contentStyles.title}>{workoutName}</p>
 
         {details.length > 0 && (
-          <ul className={styles.details} aria-label="Workout details">
+          <ul className={styles.details} aria-label={detailsAriaLabel}>
             {details.map((detail) => (
               <li key={detail} className={styles.detail}>
                 {detail}

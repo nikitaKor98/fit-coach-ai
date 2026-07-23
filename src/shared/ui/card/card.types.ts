@@ -31,6 +31,7 @@ export type UpcomingWorkoutCardData = {
   intensity?: string;
   startTime?: string;
   description?: string;
+  detailsAriaLabel?: string;
   variant?: BaseCardVariant;
 };
 
@@ -42,6 +43,8 @@ export type TrendCardData = {
   direction: TrendDirection;
   change?: string;
   points: TrendPoint[];
+  chartAriaLabel?: string;
+  getPointTitle?: (point: TrendPoint) => string;
 };
 
 export type GoalProgressCardData = {

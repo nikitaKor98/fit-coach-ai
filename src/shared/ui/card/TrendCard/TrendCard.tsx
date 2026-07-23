@@ -1,6 +1,6 @@
 import { BaseCard } from "../BaseCard/BaseCard";
 
-import type { TrendDirection } from "../../../types";
+import type { TrendDirection, TrendPoint } from "../../../types";
 import type { TrendCardData } from "../card.types";
 
 import contentStyles from "../cardContent.module.css";
@@ -14,6 +14,10 @@ const directionSymbols: Record<TrendDirection, string> = {
   stable: "→",
 };
 
+function getDefaultPointTitle(point: TrendPoint) {
+  return `${point.label}: ${point.value}`;
+}
+
 export function TrendCard({
   title,
   subtitle,
@@ -22,6 +26,8 @@ export function TrendCard({
   direction,
   change,
   points,
+  chartAriaLabel,
+  getPointTitle = getDefaultPointTitle,
 }: TrendCardProps) {
   const maximumValue = Math.max(...points.map((point) => point.value), 1);
 
@@ -42,7 +48,7 @@ export function TrendCard({
           )}
         </div>
 
-        <div className={styles.chart} aria-label={`${title} trend`}>
+        <div className={styles.chart} aria-label={chartAriaLabel ?? title}>
           {points.map((point) => {
             const height = `${Math.max(
               (point.value / maximumValue) * 100,
@@ -55,7 +61,7 @@ export function TrendCard({
                   <span
                     className={styles.bar}
                     style={{ height }}
-                    title={`${point.label}: ${point.value}`}
+                    title={getPointTitle(point)}
                   />
                 </div>
 

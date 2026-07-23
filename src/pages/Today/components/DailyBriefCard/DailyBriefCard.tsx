@@ -4,15 +4,18 @@ import styles from "./DailyBriefCard.module.css";
 
 import type { TodayDailyBriefViewModel } from "../../today.types";
 
+import { useLocalization } from "../../../../app/LocalizationProvider/useLocalization";
+
 type DailyBriefCardProps = {
   data: TodayDailyBriefViewModel;
 };
 
 export function DailyBriefCard({ data }: DailyBriefCardProps) {
+  const { t } = useLocalization();
   return (
     <BaseCard
-      title={data.title}
-      subtitle={data.subtitle}
+      title={t("today.dailyBrief.title")}
+      subtitle={t("today.dailyBrief.subtitle")}
       variant="highlighted"
       padding="lg"
     >
@@ -30,7 +33,9 @@ export function DailyBriefCard({ data }: DailyBriefCardProps) {
         </div>
 
         <div className={styles.recommendation}>
-          <span className={styles.recommendationLabel}>Today</span>
+          <span className={styles.recommendationLabel}>
+            {t("today.dailyBrief.recommendationLabel")}
+          </span>
           <p className={styles.recommendationText}>{data.recommendation}</p>
         </div>
       </div>

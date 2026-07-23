@@ -1,9 +1,8 @@
-import type { Metric } from "../../shared/types";
+import type { TodayMetricViewModel } from "./today.types";
 
-export const todayMetricsMock: Metric[] = [
+export const todayMetricsMock: TodayMetricViewModel[] = [
   {
     id: "recovery",
-    label: "Recovery",
     value: 87,
     valueType: "score",
     unit: "%",
@@ -11,7 +10,6 @@ export const todayMetricsMock: Metric[] = [
   },
   {
     id: "sleep",
-    label: "Sleep",
     value: "7h 48m",
     valueType: "duration",
     status: "normal",

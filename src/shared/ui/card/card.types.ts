@@ -54,6 +54,8 @@ export type GoalProgressCardData = {
   progress: number;
   currentValue?: string;
   targetValue?: string;
+  currentLabel?: string;
+  targetLabel?: string;
   deadline?: string;
   description?: string;
   variant?: BaseCardVariant;

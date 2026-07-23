@@ -78,4 +78,50 @@ export const en: TranslationDictionary = {
       openActivity: "Open activity",
     },
   },
+  progress: {
+    header: {
+      eyebrow: "Progress",
+      title: "Your training is moving forward",
+      subtitle:
+        "Track the changes that matter and understand what is driving your results.",
+    },
+
+    weeklySummary: {
+      title: "Weekly Summary",
+      subtitle: "This week",
+    },
+
+    trainingLoad: {
+      title: "Training Load",
+      subtitle: "Last 7 weeks",
+      chartAriaLabel: "Training load trend chart",
+
+      points: {
+        week1: "W1",
+        week2: "W2",
+        week3: "W3",
+        week4: "W4",
+        week5: "W5",
+        week6: "W6",
+        now: "Now",
+      },
+    },
+
+    metrics: {
+      consistency: "Consistency",
+      recovery: "Recovery",
+    },
+
+    goal: {
+      title: "Goal Progress",
+      subtitle: "This week",
+      currentLabel: "Current",
+      targetLabel: "Target",
+    },
+
+    recentAchievement: {
+      title: "Recent Achievement",
+      subtitle: "This week",
+    },
+  },
 };

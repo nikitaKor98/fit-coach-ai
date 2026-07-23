@@ -1,9 +1,12 @@
-import type { Metric, TrendDirection, TrendPoint } from "../../shared/types";
+import type { TrendPoint } from "../../shared/types";
+import type {
+  ProgressMetricViewModel,
+  ProgressTrendPointViewModel,
+} from "./progress.types";
 
-export const progressMetricsMock: Metric[] = [
+export const progressMetricsMock: ProgressMetricViewModel[] = [
   {
     id: "consistency",
-    label: "Consistency",
     value: 92,
     valueType: "score",
     unit: "%",
@@ -11,7 +14,6 @@ export const progressMetricsMock: Metric[] = [
   },
   {
     id: "weekly-recovery",
-    label: "Recovery",
     value: 81,
     valueType: "score",
     unit: "%",
@@ -19,9 +21,17 @@ export const progressMetricsMock: Metric[] = [
   },
 ];
 
-export const progressMock = {
-  period: "This week",
+const trainingLoadValues = [
+  { id: "week-1", value: 62 },
+  { id: "week-2", value: 68 },
+  { id: "week-3", value: 71 },
+  { id: "week-4", value: 79 },
+  { id: "week-5", value: 84 },
+  { id: "week-6", value: 89 },
+  { id: "week-7", value: 93 },
+] satisfies ProgressTrendPointViewModel[];
 
+export const progressMock = {
   weeklySummary: {
     status: "A strong and balanced week",
     description:
@@ -29,20 +39,12 @@ export const progressMock = {
   },
 
   trainingLoadTrend: {
-    direction: "up" as TrendDirection,
+    direction: "up" as const,
     change: "12% this week",
     summary: "Training load is increasing gradually",
     description:
       "Your load increased without a meaningful decline in recovery.",
-    values: [
-      { id: "week-1", label: "W1", value: 62 },
-      { id: "week-2", label: "W2", value: 68 },
-      { id: "week-3", label: "W3", value: 71 },
-      { id: "week-4", label: "W4", value: 79 },
-      { id: "week-5", label: "W5", value: 84 },
-      { id: "week-6", label: "W6", value: 89 },
-      { id: "week-7", label: "Now", value: 93 },
-    ] satisfies TrendPoint[],
+    values: trainingLoadValues,
   },
 
   metrics: progressMetricsMock,

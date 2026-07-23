@@ -80,4 +80,50 @@ export const ru: TranslationDictionary = {
       openActivity: "Открыть активность",
     },
   },
+  progress: {
+    header: {
+      eyebrow: "Прогресс",
+      title: "Ваши тренировки движутся вперёд",
+      subtitle:
+        "Отслеживайте важные изменения и понимайте, что влияет на ваши результаты.",
+    },
+
+    weeklySummary: {
+      title: "Итоги недели",
+      subtitle: "На этой неделе",
+    },
+
+    trainingLoad: {
+      title: "Тренировочная нагрузка",
+      subtitle: "Последние 7 недель",
+      chartAriaLabel: "График изменения тренировочной нагрузки",
+
+      points: {
+        week1: "Н1",
+        week2: "Н2",
+        week3: "Н3",
+        week4: "Н4",
+        week5: "Н5",
+        week6: "Н6",
+        now: "Сейчас",
+      },
+    },
+
+    metrics: {
+      consistency: "Регулярность",
+      recovery: "Восстановление",
+    },
+
+    goal: {
+      title: "Прогресс цели",
+      subtitle: "На этой неделе",
+      currentLabel: "Текущее значение",
+      targetLabel: "Цель",
+    },
+
+    recentAchievement: {
+      title: "Последнее достижение",
+      subtitle: "На этой неделе",
+    },
+  },
 };

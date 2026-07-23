@@ -37,7 +37,30 @@ export type TranslationKey =
   | "today.recommendation.title"
   | "today.recommendation.subtitle"
   | "today.recentActivity.title"
-  | "today.recentActivity.subtitle";
+  | "today.recentActivity.subtitle"
+  | "progress.header.eyebrow"
+  | "progress.header.title"
+  | "progress.header.subtitle"
+  | "progress.weeklySummary.title"
+  | "progress.weeklySummary.subtitle"
+  | "progress.trainingLoad.title"
+  | "progress.trainingLoad.subtitle"
+  | "progress.trainingLoad.chartAriaLabel"
+  | "progress.metrics.consistency"
+  | "progress.metrics.recovery"
+  | "progress.goal.title"
+  | "progress.goal.subtitle"
+  | "progress.goal.currentLabel"
+  | "progress.goal.targetLabel"
+  | "progress.recentAchievement.title"
+  | "progress.recentAchievement.subtitle"
+  | "progress.trainingLoad.points.week1"
+  | "progress.trainingLoad.points.week2"
+  | "progress.trainingLoad.points.week3"
+  | "progress.trainingLoad.points.week4"
+  | "progress.trainingLoad.points.week5"
+  | "progress.trainingLoad.points.week6"
+  | "progress.trainingLoad.points.now";
 
 export type LocalizationContextValue = {
   language: AppLanguage;

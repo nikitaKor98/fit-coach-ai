@@ -17,6 +17,8 @@ export function GoalProgressCard({
   goalName,
   currentValue,
   targetValue,
+  currentLabel = "Current",
+  targetLabel = "Target",
   progress,
   deadline,
   description,
@@ -54,8 +56,8 @@ export function GoalProgressCard({
 
         {hasValues && (
           <div className={styles.values}>
-            <span>{currentValue ?? "Current"}</span>
-            <span>{targetValue ?? "Target"}</span>
+            <span>{currentValue ?? currentLabel}</span>
+            <span>{targetValue ?? targetLabel}</span>
           </div>
         )}
 
